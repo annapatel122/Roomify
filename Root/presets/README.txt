@@ -1,0 +1,1 @@
+Optional but useful for storing reusable components like headers, footers, or navigation bars. These can be dynamically loaded using server-side technologies (e.g., PHP) or JavaScript.
