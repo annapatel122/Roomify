@@ -2,6 +2,7 @@
 
 
 **Root file**
+
 Contains homepage, login and signup page (unimplemented other than gui)
 -And basic file structure (subject to change)
 
@@ -16,6 +17,7 @@ with notes on your research for how you want to do things on your side of the pr
 
 ScrumMaster: Sarah Miller
 Product Owner: Cameron Rutherford
+
 - Development Team -
 Engineering Manager - Anna Patel
 Software Architect - Zihan Gao
