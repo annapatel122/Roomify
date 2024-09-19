@@ -1,6 +1,6 @@
 # Roomify
 
-=========================================================
+
 **Root file**
 Contains homepage, login and signup page (unimplemented other than gui)
 -And basic file structure (subject to change)
