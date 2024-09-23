@@ -20,7 +20,7 @@ with notes on your research for how you want to do things on your side of the pr
 **Homepage -**
 https://camisrutt.github.io/Roomifytest/Root/html-pages/home-page.html
 
-**^^^ This will need to be changed most likely to https://annapatel122.github.io/Roomify/Root/html-pages/home-page.html
+**^^^ This will need to be changed most likely to https://annapatel122.github.io/Roomify/Root/html-pages/home-page.html**
 
 ## Project Team Roles
 
