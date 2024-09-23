@@ -1,1 +1,1 @@
-A directory for all individual pages (HTML files), like our "About" or "Contact" page.
+A directory for all individual pages (HTML files)
