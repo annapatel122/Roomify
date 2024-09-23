@@ -16,6 +16,10 @@ Contains homepage, login and signup page (unimplemented other than gui)
 - I'd highly recommend to either highly comment on your code and/or create a document 
 with notes on your research for how you want to do things on your side of the project
 
+## Project Testing
+**homepage**
+https://camisrutt.github.io/Roomifytest/Root/home-page.html
+
 ## Project Team Roles
 
 ScrumMaster: **Sarah Miller**
