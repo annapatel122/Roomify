@@ -18,6 +18,8 @@ with notes on your research for how you want to do things on your side of the pr
 
 ## Project Testing
 **Homepage -**
+https://camisrutt.github.io/Roomifytest/Root/html-pages/home-page.html
+
 https://camisrutt.github.io/Roomifytest/Root/home-page.html
 
 ## Project Team Roles
