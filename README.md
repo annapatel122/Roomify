@@ -17,10 +17,11 @@ Contains homepage, login and signup page (unimplemented other than gui)
 with notes on your research for how you want to do things on your side of the project
 
 ## Project Testing
-**Homepage -**
-https://camisrutt.github.io/Roomifytest/Root/html-pages/home-page.html
+**Homepage - (Main Testing Site)**
 
-**^^^ This will need to be changed most likely to https://annapatel122.github.io/Roomify/Root/html-pages/home-page.html**
+**https://annapatel122.github.io/Roomify/Root/html-pages/home-page.html**
+
+-Can also make your own test branchs to ensure stablity-
 
 ## Project Team Roles
 
