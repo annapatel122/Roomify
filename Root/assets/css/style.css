@@ -14,9 +14,9 @@ body {
     color: #333;
     display: flex;
     flex-direction: column; /* Ensure vertical stacking */
-    justify-content: center;
+    justify-content: flex-start; /* Align elements from the top */
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 body::before {
@@ -29,7 +29,7 @@ body::before {
     background-image: url('https://camisrutt.github.io/Roomifytest/Root/assets/Images/img_sketchhouses.jpg');
     background-position: center;
     opacity: 0.25;
-    z-index: -1;
+    z-index: 0; /* Place the background below all other content */
 }
 
 /* Navigation Styles */
@@ -38,6 +38,7 @@ nav {
     justify-content: center;
     width: 100%; /* Ensure nav takes up full width */
     margin-top: 10px;
+    z-index: 1; /* Ensure links are visible */
 }
 
 nav a {
@@ -59,6 +60,8 @@ header {
     padding: 20px;
     text-align: center;
     width: 100%; /* Ensure header takes full width */
+    position: relative; /* Ensure it's in the document flow */
+    z-index: 1; /* Ensure it’s above other elements */
 }
 
 header h1 {
@@ -114,10 +117,33 @@ button:hover {
 
 /* Section Styles */
 section {
-    display: block; /* Ensure block-level for stacking */
-    width: 100%; /* Take up full width */
+    display: flex; /* Use flexbox to manage layout */
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center content horizontally */
+    width: 100%;
     padding: 20px;
     text-align: center;
+}
+
+/* Card Layout for Dynamic Sections */
+section {
+    display: flex;
+    flex-wrap: wrap; /* Ensure cards wrap to the next line */
+    justify-content: center; /* Center cards within the section */
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Add spacing between cards */
+    width: calc(33.33% - 20px); /* Adjust to fit three cards per row */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 /* Footer Styles */
@@ -139,4 +165,16 @@ section {
 
 .footer a:hover {
     color: #a8d5ba;
+}
+
+/* Keyframes for animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
