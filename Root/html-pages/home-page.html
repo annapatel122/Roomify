@@ -13,6 +13,21 @@
             background-color: #f0f7f4;
             color: #333;
             transition: background-color 0.5s ease;
+            position: relative;
+            z-index: 0;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://camisrutt.github.io/Roomifytest/Root/assets/Images/img_sketchhouses.jpg');
+            /* http://annapatel122.github.io/Roomify/Root/assets/Images/img_sketchhouses.jpg */
+            background-position: center;
+            opacity: 0.25; /* Adjust the opacity to make the image faded */
+            z-index: -1;
         }
         header {
             background-color: #2b2b2b;
@@ -151,7 +166,6 @@
     </style>
 </head>
 <body>
-
 <header>
     <h1>Roomify</h1>
     <nav>
