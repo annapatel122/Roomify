@@ -5,166 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomify - Find Your Perfect Roommate Match</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f7f4;
-            color: #333;
-            transition: background-color 0.5s ease;
-            position: relative;
-            z-index: 0;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://camisrutt.github.io/Roomifytest/Root/assets/Images/img_sketchhouses.jpg');
-            /* http://annapatel122.github.io/Roomify/Root/assets/Images/img_sketchhouses.jpg */
-            background-position: center;
-            opacity: 0.25; /* Adjust the opacity to make the image faded */
-            z-index: -1;
-        }
-        header {
-            background-color: #2b2b2b;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            letter-spacing: 3px;
-            animation: slideDown 2s ease;
-        }
-        /* Pastel arrow styling */
-        .scroll-arrow {
-            font-size: 4rem;
-            color: #a8d5ba;
-            font-weight: bold;
-            margin-top: 0;
-            animation: bounce 3s infinite;
-        }
-        @keyframes slideDown {
-            from {transform: translateY(-50px); opacity: 0;}
-            to {transform: translateY(0); opacity: 1;}
-        }
-        /* Bounce animation for arrow */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(20px);
-            }
-            60% {
-                transform: translateY(10px);
-            }
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        nav a {
-            margin: 0 20px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #a8d5ba;
-        }
-        .hero {
-            background: linear-gradient(135deg, #a8d5ba, #f0f7f4);
-            color: #2b2b2b;
-            text-align: center;
-            padding: 80px 20px;
-        }
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-        }
-        .hero button {
-            background-color: #2b2b2b;
-            border: none;
-            padding: 12px 25px;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 25px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .hero button:hover {
-            background-color: #555555;
-            transform: translateY(-5px);
-        }
-        section {
-            margin: 40px 20px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h3 {
-            font-size: 2rem;
-            color: #2b2b2b;
-        }
-        section p {
-            font-size: 1rem;
-            color: #666;
-        }
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        .footer {
-            background-color: #2b2b2b;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-        .footer a:hover {
-            color: #a8d5ba;
-        }
-        .social-media img {
-            width: 30px;
-            margin: 10px;
-            transition: transform 0.3s ease;
-        }
-        .social-media img:hover {
-            transform: scale(1.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <header>
     <h1>Roomify</h1>
@@ -172,8 +15,7 @@
         <a href="login-page.html">Login</a>
         <div class="scroll-arrow">&#x2193;</div> <!-- Down arrow added here -->
         <a href="signup-page.html">Sign Up</a>
-    </nav>
-    
+    </nav>   
 </header>
 
 <section class="hero">

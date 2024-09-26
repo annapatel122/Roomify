@@ -8,96 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <!-- Google Sign-In API -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f7f4;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://camisrutt.github.io/Roomifytest/Root/assets/Images/img_sketchhouses.jpg');
-            /* http://annapatel122.github.io/Roomify/Root/assets/Images/img_sketchhouses.jpg */
-            background-position: center;
-            opacity: 0.25; /* Adjust the opacity to make the image faded */
-            z-index: -1;
-        }
-        .signup-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 350px;
-        }
-        .signup-container h2 {
-            text-align: center;
-            color: #2b2b2b;
-            margin-bottom: 20px;
-        }
-        .signup-container form {
-            display: flex;
-            flex-direction: column;
-        }
-        .signup-container label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        .signup-container input {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .signup-container button {
-            background-color: #2b2b2b;
-            border: none;
-            color: white;
-            padding: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .signup-container button:hover {
-            background-color: #555555;
-            transform: translateY(-5px);
-        }
-        .google-signin-button {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 0px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .google-signin-button:hover {
-            background-color: #ffffffc7;
-            transform: translateY(-3px);
-        }
-        .login-link, .back-to-homepage {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .login-link a, .back-to-homepage a {
-            color: #a8d5ba;
-            text-decoration: none;
-        }
-        .login-link a:hover, .back-to-homepage a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="signup-container">
