@@ -9,9 +9,9 @@ body {
     padding: 0;
     background-color: #eef5f2;
     color: #333;
-    min-height: 100vh;          /* Ensure body takes up at least full viewport height */
-    display: flex;              /* Make body a flex container */
-    flex-direction: column;     /* Stack child elements vertically */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navigation Bar */
@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-shrink: 0;             /* Prevent the nav from shrinking */
+    flex-shrink: 0;
 }
 
 .top-nav .logo h1 {
@@ -70,229 +70,109 @@ body {
 
 /* Main Container */
 .main-container {
-    flex: 1;                    /* Allow main content to grow and fill available space */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 40px 20px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+/* Profile Section */
+.profile-section {
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
 }
 
-/* Collapsible Buttons */
-.collapsible {
-    background-color: #2b2b2b;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1.2rem;
-    border-radius: 15px;
-    transition: background-color 0.3s ease;
+.profile-picture {
+    flex: 1;
+    text-align: center;
     position: relative;
 }
 
-.collapsible:hover {
-    background-color: #555555;
-}
-
-.collapsible:after {
-    content: '\002B'; /* Unicode character for "plus" sign (+) */
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    right: 20px;
-    font-size: 1.5rem;
-}
-
-.collapsible.active:after {
-    content: "\2212"; /* Unicode character for "minus" sign (−) */
-}
-
-/* Content within Collapsible Cards */
-.content {
-    padding: 0 20px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-    border-radius: 0 0 15px 15px;
-    background-color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 10px;
-}
-
-/* Individual Cards */
-.profile-card, .preferences-card, .matches-card, .messages-card, .compatibility-card, .settings-card {
-    padding: 20px;
-}
-
-.profile-card .profile-content,
-.preferences-card .preferences-content,
-.matches-card .matches-content,
-.messages-card .messages-content,
-.compatibility-card .compatibility-content,
-.settings-card .settings-content {
-    /* Adjust padding within content */
-    padding: 0;
-}
-
-/* Profile Card */
-.profile-card .profile-content {
-    text-align: center;
-}
-
-.profile-card img {
-    width: 120px;
-    height: 120px;
+.profile-picture img {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
 }
 
-.profile-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #2b2b2b;
+.profile-picture input[type="file"] {
+    display: none;
 }
 
-.profile-card p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.profile-card button {
+.profile-picture .edit-photo-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #2b2b2b;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.profile-card button:hover {
-    background-color: #555555;
-}
-
-/* Preferences Card */
-.preferences-card p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.preferences-card button {
-    background-color: #2b2b2b;
-    color: white;
-    border: none;
     padding: 8px 15px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.preferences-card button:hover {
-    background-color: #555555;
-}
-
-/* Matches Card */
-.matches-card .matches-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.matches-card .match {
-    background-color: #eef5f2;
-    border-radius: 10px;
-    padding: 15px;
-    width: 100%;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.matches-card .match img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.matches-card .match h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #2b2b2b;
-}
-
-.matches-card .match button {
-    background-color: #2b2b2b;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.matches-card .match button:hover {
-    background-color: #555555;
-}
-
-/* Messages Card */
-.messages-card .messages-content {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.messages-card .message {
-    background-color: #eef5f2;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-
-.messages-card .message h3 {
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-    color: #2b2b2b;
-}
-
-.messages-card .message p {
     font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.profile-picture .edit-photo-button:hover {
+    background-color: #555555;
+}
+
+.profile-info {
+    flex: 2;
+    padding-left: 40px;
+}
+
+.profile-info h2 {
+    font-size: 2rem;
+    color: #2b2b2b;
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
     color: #666;
+    margin-bottom: 10px;
 }
 
-/* Compatibility Card */
-.compatibility-card p {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Settings Card */
-.settings-card .settings-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.settings-card button {
+.profile-info .edit-profile-button {
     background-color: #2b2b2b;
     color: white;
     border: none;
     padding: 10px 25px;
     border-radius: 20px;
     cursor: pointer;
-    margin: 10px 0;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.profile-info .edit-profile-button:hover {
+    background-color: #555555;
+}
+
+/* Find Your Roommate Section */
+.find-roommate {
+    margin-top: 40px;
+}
+
+.find-roommate .find-roommate-button {
+    background-color: #a8d5ba;
+    color: #2b2b2b;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
-.settings-card button:hover {
-    background-color: #555555;
+.find-roommate .find-roommate-button:hover {
+    background-color: #8bc6a9;
 }
 
 /* Footer */
@@ -301,8 +181,7 @@ body {
     color: white;
     text-align: center;
     padding: 25px;
-    margin-top: 40px;
-    flex-shrink: 0;             /* Prevent the footer from shrinking */
+    flex-shrink: 0;
 }
 
 .footer a {
@@ -319,27 +198,17 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .nav-items {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-items a, .nav-items .logout {
-        margin: 5px 10px;
-    }
-
-    .nav-items .username {
-        margin: 10px 0 0 0;
-    }
-
-    .top-nav {
+    .profile-section {
         flex-direction: column;
         align-items: center;
+        text-align: center;
+    }
+
+    .profile-info {
+        padding-left: 0;
+        margin-top: 20px;
     }
 }
+
 
 
