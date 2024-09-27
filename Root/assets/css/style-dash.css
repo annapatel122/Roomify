@@ -9,6 +9,9 @@ body {
     padding: 0;
     background-color: #eef5f2;
     color: #333;
+    min-height: 100vh;          /* Ensure body takes up at least full viewport height */
+    display: flex;              /* Make body a flex container */
+    flex-direction: column;     /* Stack child elements vertically */
 }
 
 /* Navigation Bar */
@@ -19,6 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-shrink: 0;             /* Prevent the nav from shrinking */
 }
 
 .top-nav .logo h1 {
@@ -66,6 +70,7 @@ body {
 
 /* Main Container */
 .main-container {
+    flex: 1;                    /* Allow main content to grow and fill available space */
     padding: 40px 20px;
 }
 
@@ -297,6 +302,7 @@ body {
     text-align: center;
     padding: 25px;
     margin-top: 40px;
+    flex-shrink: 0;             /* Prevent the footer from shrinking */
 }
 
 .footer a {
