@@ -7,522 +7,236 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f7f4;
+    background-color: #eef5f2;
     color: #333;
-    transition: background-color 0.5s ease;
-    position: relative;
-    z-index: 0;
 }
 
-header {
+/* Navigation Bar */
+.top-nav {
     background-color: #2b2b2b;
     color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 3rem;
-    letter-spacing: 3px;
-    animation: slideDown 2s ease;
-}
-
-nav {
+    padding: 15px 20px;
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-nav .logo h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.nav-items {
+    display: flex;
     align-items: center;
 }
 
-nav a {
-    margin: 0 15px;
+.nav-items a {
+    color: white;
     text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+    margin: 0 15px;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-nav a:hover {
+.nav-items a:hover {
     color: #a8d5ba;
 }
 
-.username {
+.nav-items .username {
     margin-left: 20px;
-    font-weight: bold;
     color: #a8d5ba;
+    font-weight: bold;
 }
 
-nav .username {
-    margin-left: auto;
-    margin-right: 20px;
-}
-
-nav a.logout {
-    margin-left: 0;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Profile Dashboard Styling */
-.profile-dashboard {
-    margin: 40px auto;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-
-.profile-dashboard h2 {
-    font-size: 2.5rem;
+.nav-items .logout {
+    margin-left: 20px;
+    background-color: #a8d5ba;
     color: #2b2b2b;
-    text-align: center;
-    margin-bottom: 30px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-.profile-card {
-    display: flex;
-    flex-wrap: wrap;
+.nav-items .logout:hover {
+    background-color: #8bc6a9;
+}
+
+/* Main Container */
+.main-container {
+    padding: 40px 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: masonry;
+    gap: 20px;
+}
+
+/* Grid Items */
+.grid-item {
     background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-items: center;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
-.profile-card:hover {
+.grid-item:hover {
     transform: translateY(-10px);
 }
 
-.profile-image {
-    flex: 1;
-    text-align: center;
-}
-
-.profile-image img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.profile-image button {
-    background-color: #2b2b2b;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 25px;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.profile-image button:hover {
-    background-color: #555555;
-    transform: translateY(-5px);
-}
-
-.profile-info {
-    flex: 2;
-    padding-left: 40px;
-}
-
-.profile-info h3 {
-    font-size: 2rem;
+.grid-item h2 {
+    font-size: 1.8rem;
     color: #2b2b2b;
     margin-bottom: 15px;
 }
 
-.profile-info p {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 8px 0;
-}
-
-.profile-info button {
-    background-color: #2b2b2b;
-    border: none;
-    padding: 10px 25px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 25px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.profile-info button:hover {
-    background-color: #555555;
-    transform: translateY(-5px);
-}
-
-/* Preferences Section */
-.preferences, .compatibility, .matches {
-    margin: 60px auto;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-
-.preferences h2, .compatibility h2, .matches h2 {
-    font-size: 2.2rem;
-    color: #2b2b2b;
+/* Profile Card */
+.profile-card .profile-content {
     text-align: center;
-    margin-bottom: 30px;
 }
 
-.preferences-card, .compatibility-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
-.preferences-card p, .compatibility-card p {
-    font-size: 1.1rem;
+.profile-card h3 {
+    margin-bottom: 10px;
+}
+
+.profile-card p {
+    font-size: 1rem;
     color: #666;
-    margin: 12px 0;
+    margin-bottom: 10px;
+}
+
+.profile-card button {
+    background-color: #2b2b2b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-card button:hover {
+    background-color: #555555;
+}
+
+/* Preferences Card */
+.preferences-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .preferences-card button {
     background-color: #2b2b2b;
-    border: none;
-    padding: 10px 25px;
     color: white;
-    font-size: 1rem;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
     cursor: pointer;
-    border-radius: 25px;
-    margin-top: 25px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .preferences-card button:hover {
     background-color: #555555;
-    transform: translateY(-5px);
 }
 
-/* Matches Section */
-.matches-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.match-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 260px;
-    margin: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.match-card:hover {
-    transform: translateY(-10px);
-}
-
-.match-card img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.match-card h3 {
-    font-size: 1.6rem;
-    color: #2b2b2b;
-    margin: 15px 0 10px;
-}
-
-.match-card p {
-    font-size: 1rem;
-    color: #666;
-    margin: 8px 0;
-}
-
-.match-card button {
-    background-color: #2b2b2b;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 25px;
-    margin: 10px 5px 0;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.match-card button:hover {
-    background-color: #555555;
-    transform: translateY(-5px);
-}
-
-/* Footer Styling */
-footer {
-    background-color: #2b2b2b;
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #a8d5ba;
-}
-
-.social-media {
-    margin-top: 20px;
-}
-
-.social-media img {
-    width: 30px;
-    margin: 0 10px;
-    transition: transform 0.3s ease;
-}
-
-.social-media img:hover {
-    transform: scale(1.2);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .profile-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .profile-image, .profile-info {
-        padding: 0;
-    }
-
-    .profile-info {
-        padding-top: 20px;
-    }
-
-    .profile-info h3 {
-        margin-bottom: 10px;
-    }
-
-    .preferences-card, .compatibility-card {
-        padding: 20px;
-    }
-
-    .match-card {
-        width: 90%;
-        margin: 15px auto;
-    }
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    background-color: #2b2b2b;
-    color: white;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-}
-
-.sidebar-header {
-    text-align: center;
-    padding: 20px;
-}
-
-.sidebar-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.sidebar-header .username {
-    font-size: 1.2rem;
-    color: #a8d5ba;
-}
-
-.sidebar-menu {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar-menu li {
-    padding: 15px 20px;
-}
-
-.sidebar-menu li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    font-size: 1.1rem;
-}
-
-.sidebar-menu li a:hover {
-    background-color: #a8d5ba;
-    color: #2b2b2b;
-}
-
-.sidebar-footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
-
-.sidebar-footer a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.sidebar-footer a:hover {
-    color: #a8d5ba;
-}
-
-/* Main Content Styling */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-}
-
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.search-bar input {
-    padding: 10px;
-    width: 300px;
-    border: none;
-    border-radius: 25px;
-    outline: none;
-}
-
-.notifications a {
-    margin-left: 20px;
-}
-
-.notifications img {
-    width: 25px;
-}
-
-.content-section {
-    margin-bottom: 60px;
-}
-
-.content-section h2 {
-    font-size: 2rem;
-    color: #2b2b2b;
-    margin-bottom: 30px;
-}
-
-/* Dashboard Overview Styling */
-.stats-grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.stat-card {
-    background-color: #a8d5ba;
-    color: #2b2b2b;
-    border-radius: 10px;
-    padding: 30px;
-    flex: 1;
-    margin: 10px;
-    text-align: center;
-}
-
-.stat-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-.stat-card p {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* Messages Section */
-.messages-list {
+/* Matches Card */
+.matches-card .matches-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.message-card {
-    display: flex;
-    background-color: white;
+.matches-card .match {
+    background-color: #eef5f2;
     border-radius: 10px;
     padding: 15px;
+    width: 100%;
     margin-bottom: 15px;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.message-card img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.matches-card .match img {
+    width: 100%;
+    border-radius: 10px;
     object-fit: cover;
-    margin-right: 15px;
+    margin-bottom: 10px;
 }
 
-.message-info {
-    flex: 1;
+.matches-card .match h3 {
+    margin-bottom: 10px;
 }
 
-.message-info h3 {
-    margin: 0;
-    font-size: 1.2rem;
+.matches-card .match button {
+    background-color: #2b2b2b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.message-info p {
-    margin: 5px 0;
+.matches-card .match button:hover {
+    background-color: #555555;
+}
+
+/* Messages Card */
+.messages-card .messages-content {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.messages-card .message {
+    background-color: #eef5f2;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.messages-card .message h3 {
+    margin-bottom: 5px;
+}
+
+.messages-card .message p {
+    font-size: 0.9rem;
     color: #666;
 }
 
-.message-info .timestamp {
-    font-size: 0.9rem;
-    color: #aaa;
+/* Compatibility Card */
+.compatibility-card p {
+    font-size: 1.2rem;
+    color: #666;
 }
 
-/* Settings Section */
-.settings-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.settings-card p {
-    font-size: 1.1rem;
-    margin: 15px 0;
+/* Settings Card */
+.settings-card .settings-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .settings-card button {
     background-color: #2b2b2b;
-    border: none;
-    padding: 10px 20px;
     color: white;
-    font-size: 1rem;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
     cursor: pointer;
-    border-radius: 25px;
-    margin-right: 15px;
+    margin: 10px 0;
     transition: background-color 0.3s ease;
 }
 
@@ -530,42 +244,104 @@ footer a:hover {
     background-color: #555555;
 }
 
+/* Footer */
+.footer {
+    background-color: #2b2b2b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #a8d5ba;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
+    .grid-container {
+        grid-template-columns: 1fr;
     }
 
-    .sidebar-menu li {
-        float: left;
+    .nav-items {
+        flex-wrap: wrap;
     }
 
-    .sidebar-menu li a {
-        text-align: center;
-        padding: 14px;
-        width: 100%;
-        display: block;
+    .nav-items a, .nav-items .logout {
+        margin: 5px 10px;
     }
 
-    .main-content {
-        margin-left: 0;
+    .nav-items .username {
+        margin: 10px 0 0 0;
     }
 
-    .top-nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-bar input {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .stats-grid {
-        flex-direction: column;
-    }
 }
 
+/* Collapsible Buttons */
+.collapsible {
+    background-color: #2b2b2b;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
 }
+
+.collapsible:hover {
+    background-color: #555555;
+}
+
+.collapsible:after {
+    content: '\002B'; /* Unicode character for "plus" sign (+) */
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.collapsible.active:after {
+    content: "\2212"; /* Unicode character for "minus" sign (−) */
+}
+
+.content {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out, padding 0.2s ease-out;
+    border-radius: 0 0 15px 15px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+/* Content within the Collapsible Cards */
+.profile-card, .preferences-card, .matches-card, .messages-card, .compatibility-card, .settings-card {
+    /* Remove individual card backgrounds and shadows to rely on the .content class */
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+.profile-card .profile-content,
+.preferences-card .preferences-content,
+.matches-card .matches-content,
+.messages-card .messages-content,
+.compatibility-card .compatibility-content,
+.settings-card .settings-content {
+    /* Adjust padding within content */
+    padding: 20px 0;
+}
+

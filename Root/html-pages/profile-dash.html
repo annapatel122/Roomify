@@ -3,92 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roomify - Profile Dashboard</title>
+    <title>Roomify - Your Peaceful Space</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style-dash.css">
-    <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style.css">
+    <link rel="stylesheet" href="path_to_your_repo/style-profile.css">
 </head>
 <body>
-    <header>
-        <h1>Roomify</h1>
-        <nav>
-            <a href="matches.html">Matches</a>
-            <a href="messages.html">Messages</a>
-            <a href="settings.html">Settings</a>
-            <!-- Display username when authenticated -->
+    <!-- Navigation Bar -->
+    <header class="top-nav">
+        <div class="logo">
+            <h1>Roomify</h1>
+        </div>
+        <!-- Display username when authenticated -->
+        <div class="nav-items">
+            <a href="#profile">My Profile</a>
+            <a href="#matches">Matches</a>
+            <a href="#messages">Messages</a>
+            <a href="#settings">Settings</a>
             <div class="username">Hello, [Username]</div>
-            <a href="logout.html">Logout</a>
-        </nav>   
+            <a href="logout.html" class="logout">Logout</a>
+        </div>
     </header>
 
-    <section class="profile-dashboard">
-        <h2>Your Profile</h2>
-        <div class="profile-card">
-            <div class="profile-image">
-                <img src="path_to_profile_picture.jpg" alt="Profile Picture">
-                <button>Edit Photo</button>
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Masonry Grid Layout -->
+        <div class="grid-container">
+            <!-- Profile Card -->
+            <div class="grid-item">
+                <button class="collapsible">My Profile</button>
+                <div class="content profile-card">
+                    <div class="profile-content">
+                        <img src="path_to_profile_picture.jpg" alt="Profile Picture">
+                        <h3>[Full Name], [Age]</h3>
+                        <p><strong>Occupation:</strong> [Occupation]</p>
+                        <p><strong>Location:</strong> [Location]</p>
+                        <button>Edit Profile</button>
+                    </div>
+                </div>
             </div>
-            <div class="profile-info">
-                <h3>[Full Name], [Age]</h3>
-                <p><strong>Occupation:</strong> [Occupation]</p>
-                <p><strong>Location:</strong> [Location]</p>
-                <p><strong>Gender:</strong> [Gender]</p>
-                <p><strong>Move-in Date:</strong> [Move-in Date]</p>
-                <p><strong>Budget:</strong> $[Budget]</p>
-                <p><strong>About Me:</strong> [Short Bio]</p>
-                <button>Edit Profile</button>
+
+            <!-- Preferences Card -->
+            <div class="grid-item">
+                <button class="collapsible">Preferences</button>
+                <div class="content preferences-card">
+                    <div class="preferences-content">
+                        <p><strong>Preferred Gender:</strong> [Preferred Gender]</p>
+                        <p><strong>Age Range:</strong> [Age Range]</p>
+                        <button>Edit Preferences</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matches Card -->
+            <div class="grid-item">
+                <button class="collapsible">Matches</button>
+                <div class="content matches-card">
+                    <div class="matches-content">
+                        <!-- Example Match -->
+                        <div class="match">
+                            <img src="path_to_match_profile_picture.jpg" alt="Match Picture">
+                            <h3>[Match Name], [Age]</h3>
+                            <button>View Profile</button>
+                        </div>
+                        <!-- Add more matches as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Card -->
+            <div class="grid-item">
+                <button class="collapsible">Messages</button>
+                <div class="content messages-card">
+                    <div class="messages-content">
+                        <!-- Example Message -->
+                        <div class="message">
+                            <h3>From: [Sender Name]</h3>
+                            <p>[Message Preview]</p>
+                        </div>
+                        <!-- Add more messages as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compatibility Card -->
+            <div class="grid-item">
+                <button class="collapsible">Compatibility</button>
+                <div class="content compatibility-card">
+                    <div class="compatibility-content">
+                        <p><strong>Overall Compatibility:</strong> [Score]%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Card -->
+            <div class="grid-item">
+                <button class="collapsible">Settings</button>
+                <div class="content settings-card">
+                    <div class="settings-content">
+                        <button>Account Settings</button>
+                        <button>Privacy Settings</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="preferences">
-        <h2>Your Preferences</h2>
-        <div class="preferences-card">
-            <p><strong>Preferred Gender:</strong> [Preferred Gender]</p>
-            <p><strong>Preferred Age Range:</strong> [Age Range]</p>
-            <p><strong>Cleanliness Level:</strong> [Cleanliness]</p>
-            <p><strong>Noise Level:</strong> [Noise Level]</p>
-            <p><strong>Smoking Preference:</strong> [Smoking Preference]</p>
-            <p><strong>Pet-Friendly:</strong> [Pet Preference]</p>
-            <button>Edit Preferences</button>
-        </div>
-    </section>
-
-    <section class="compatibility">
-        <h2>Compatibility Scores</h2>
-        <div class="compatibility-card">
-            <p><strong>Overall Compatibility:</strong> [Score]%</p>
-            <p><strong>Lifestyle Match:</strong> [Score]%</p>
-            <p><strong>Habits Match:</strong> [Score]%</p>
-            <p><strong>Interests Match:</strong> [Score]%</p>
-        </div>
-    </section>
-
-    <section class="matches">
-        <h2>Your Matches</h2>
-        <div class="matches-list">
-            <!-- Example Match Card -->
-            <div class="match-card">
-                <img src="path_to_match_profile_picture.jpg" alt="Match Profile Picture">
-                <h3>[Match Name], [Age]</h3>
-                <p><strong>Compatibility:</strong> [Score]%</p>
-                <button>View Profile</button>
-                <button>Message</button>
-            </div>
-            <!-- Repeat for other matches -->
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
         <a href="#">About Us</a> | 
         <a href="#">Privacy Policy</a> | 
         <a href="#">Contact Us</a>
-        <div class="social-media">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-        </div>
     </footer>
+
+    <!-- JavaScript for Collapsible Cards -->
+    <script>
+        const collapsibles = document.querySelectorAll('.collapsible');
+        collapsibles.forEach(collapsible => {
+            collapsible.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.padding = '0 20px';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.padding = '20px';
+                } 
+            });
+        });
+    </script>
 </body>
 </html>
+
+
