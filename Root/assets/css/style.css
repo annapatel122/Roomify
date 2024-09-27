@@ -5,7 +5,7 @@
 
 
 /* Background Image for pages*/
-
+/* homepage - login page - signup page */
 body::before {
     content: '';
     position: absolute;
