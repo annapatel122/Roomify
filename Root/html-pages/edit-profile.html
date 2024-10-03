@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile - Roomify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+        <!-- Include Firebase Initialization -->
+        <script type="module" src="https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js" defer></script>
+        <!-- Include your profile dashboard JavaScript -->
+        <script type="module" src="https://camisrutt.github.io/Roomifytest/Root/assets/js/edit-profile.js" defer></script>
+    <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style-edit.css">
+    <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar (similar to profile-dash.html) -->
+  <header class="top-nav">
+    <!-- ... your navigation items ... -->
+  </header>
+
+  <!-- Edit Profile Form -->
+
+  <form id="edit-profile-form">
+    <label for="displayName">Full Name</label>
+    <input type="text" id="displayName" name="displayName" required>
+  
+    <label for="occupation">Occupation</label>
+    <input type="text" id="occupation" name="occupation">
+  
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location">
+  
+    <label for="gender">Gender</label>
+    <input type="text" id="gender" name="gender">
+  
+    <label for="moveInDate">Move-in Date</label>
+    <input type="date" id="moveInDate" name="moveInDate">
+  
+    <label for="budget">Budget</label>
+    <input type="number" id="budget" name="budget">
+  
+    <label for="bio">About Me</label>
+    <textarea id="bio" name="bio"></textarea>
+  
+    <!-- Profile Picture Upload (Optional) -->
+    <label for="profilePicture">Profile Picture</label>
+    <input type="file" id="profilePicture" accept="image/*">
+  
+    <button type="submit">Save Changes</button>
+  </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- ... your footer content ... -->
+  </footer>
+</body>
+</html>

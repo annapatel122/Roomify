@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomify - Your Peaceful Space</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+        <!-- Include Firebase Initialization -->
+        <script type="module" src="https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js" defer></script>
+        <!-- Include your profile dashboard JavaScript -->
+        <script type="module" src="https://camisrutt.github.io/Roomifytest/Root/assets/js/profile-dash.js" defer></script>
+        <script type="module" src="https://camisrutt.github.io/Roomifytest/Root/assets/js/edit-profile.js" defer></script>
     <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style-dash.css">
     <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style.css">
 </head>
@@ -14,13 +19,16 @@
         <div class="logo">
             <h1>Roomify</h1>
         </div>
+
+        <button class="edit-profile-button" id="edit-profile-button">Edit Profile</button>
+
         <!-- Display username when authenticated -->
         <div class="nav-items">
             <a href="#profile">My Profile</a>
             <a href="#matches">Matches</a>
             <a href="#messages">Messages</a>
             <a href="#settings">Settings</a>
-            <div class="username">Hello, [Username]</div>
+            <div class="username">Hello, <span id="nav-username">[Username]</span></div>
             <a href="logout.html" class="logout">Logout</a>
         </div>
     </header>
@@ -30,20 +38,20 @@
         <div class="profile-section">
             <!-- Profile Picture and Edit Option -->
             <div class="profile-picture">
-                <img src="path_to_profile_picture.jpg" alt="Profile Picture">
+                <img id="profile-pic" src="path_to_profile_picture.jpg" alt="Profile Picture">
                 <input type="file" id="profilePicInput" accept="image/*">
                 <label for="profilePicInput" class="edit-photo-button">Edit Photo</label>
             </div>
 
             <!-- Profile Information -->
             <div class="profile-info">
-                <h2>[Full Name], [Age]</h2>
-                <p><strong>Occupation:</strong> [Occupation]</p>
-                <p><strong>Location:</strong> [Location]</p>
-                <p><strong>Gender:</strong> [Gender]</p>
-                <p><strong>Move-in Date:</strong> [Move-in Date]</p>
-                <p><strong>Budget:</strong> $[Budget]</p>
-                <p><strong>About Me:</strong> [Short Bio]</p>
+                <h2 id="user-fullname">[Full Name], [Age]</h2>
+                <p><strong>Occupation:</strong> <span id="user-occupation">[Occupation]</span></p>
+                <p><strong>Location:</strong> <span id="user-location">[Location]</span></p>
+                <p><strong>Gender:</strong> <span id="user-gender">[Gender]</span></p>
+                <p><strong>Move-in Date:</strong> <span id="user-movein-date">[Move-in Date]</span></p>
+                <p><strong>Budget:</strong> $<span id="user-budget">[Budget]</span></p>
+                <p><strong>About Me:</strong> <span id="user-bio">[Short Bio]</span></p>
                 <button class="edit-profile-button">Edit Profile</button>
             </div>
         </div>
