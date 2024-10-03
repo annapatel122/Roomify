@@ -24,6 +24,17 @@ body {
     justify-content: space-between;
     flex-shrink: 0;
 }
+/*Glows on hover*/
+.top-nav .logo a {
+    text-decoration: none;
+    color: black; /* Set your desired text color */
+    font-size: 2em; /* Adjust as needed */
+    transition: text-shadow 0.3s ease-in-out; /* Smooth transition for the glow */
+}
+
+.top-nav .logo a:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.7); /* Glow effect */
+}
 
 .top-nav .logo h1 {
     margin: 0;
