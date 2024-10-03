@@ -31,7 +31,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
         await updateProfile(user, 
             { 
             displayName: username 
-            }).then(() => {window.location.href = 'https://camisrutt.github.io/Roomifytest/Root/html-pages/profile-dash.html';});
+            }).then(() => {window.location.assign ('https://camisrutt.github.io/Roomifytest/Root/html-pages/profile-dash.html');});
 
         // Save additional user data to Firestore
         await setDoc(doc(db, 'users', user.uid), {
