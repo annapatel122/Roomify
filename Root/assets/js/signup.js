@@ -1,6 +1,9 @@
 // signup.js
 
-import { auth } from 'https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js';
+import { 
+    auth,
+    db,
+} from 'https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js';
 import {
     createUserWithEmailAndPassword,
     updateProfile,
@@ -10,6 +13,9 @@ import {
     doc,
     setDoc,
   } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
+
+// Initialize Firestore
+const db = getFirestore();
 
 document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
