@@ -45,7 +45,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
         });
 
         // Redirect to profile-dash.html
-        window.location.href = 'profile-dash.html';
+        window.location.href = 'https://camisrutt.github.io/Roomifytest/Root/html-pages/profile-dash.html';
     } catch (error) {
         console.error('Error:', error.message);
         alert(error.message);
