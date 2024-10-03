@@ -26,14 +26,15 @@ body {
 }
 /*Glows on hover*/
 .top-nav .logo a {
+    color: white;
     text-decoration: none;
-    color: black; /* Set your desired text color */
-    font-size: 2em; /* Adjust as needed */
-    transition: text-shadow 0.3s ease-in-out; /* Smooth transition for the glow */
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .top-nav .logo a:hover {
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.7); /* Glow effect */
+    color: #a8d5ba;
 }
 
 .top-nav .logo h1 {
@@ -55,7 +56,7 @@ body {
 }
 
 .nav-items a:hover {
-    color: #a8d5ba;
+    background-color: #a8d5ba;
 }
 
 .nav-items .username {
