@@ -1,7 +1,18 @@
 // login.js
-
-import { auth } from 'https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js';
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js';
+//Import firebase modules
+import { 
+    auth,
+    db,
+} from 'https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js';
+import {
+    createUserWithEmailAndPassword,
+    updateProfile,
+  } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js';
+import {
+    getFirestore,
+    doc,
+    setDoc,
+  } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
 
 document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -16,8 +27,8 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
             // User signed in
             const user = userCredential.user;
             alert('User logged in successfully!');
-            // Redirect or update UI
-            window.location.href = 'home-page.html';
+            // Redirect to profile dashboard
+            window.location.href = 'profile-dash.html';
         })
         .catch((error) => {
             const errorMessage = error.message;

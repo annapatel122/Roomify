@@ -55,7 +55,7 @@ import {
         }
       } else {
         // No user is signed in.
-        window.location.href = 'login-page.html';
+        window.location.assign ('login-page.html');
       }
     });
   
@@ -63,7 +63,7 @@ import {
     const editProfileButton = document.getElementById('edit-profile-button');
     if (editProfileButton) {
       editProfileButton.addEventListener('click', () => {
-        window.location.href = 'edit-profile.html';
+        window.location.assign ('edit-profile.html');
       });
     }
   });

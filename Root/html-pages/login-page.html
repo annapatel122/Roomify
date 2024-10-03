@@ -16,16 +16,16 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form action="login.php" method="post">
-        <label for="username">Username</label>
-            <input type="text" name="username" placeholder="Username" required>
-        <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Log In</button>    
+        <form id="login-form" method="post">
+            <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Username" required>
+            <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Log In</button>    
         </form>
-        
+        <!--
         <div class="google-signin-button">
-            <!-- TODO: Replace with your Google Client ID -->
+             TODO: Replace with your Google Client ID 
             <div id="g_id_onload"
                 data-client_id="YOUR_GOOGLE_CLIENT_ID"  
                 data-context="signup"
@@ -33,7 +33,7 @@
                 data-ux_mode="popup"
                 data-login_uri="YOUR_BACKEND_URL"
                 data-auto_prompt="false">
-                <!-- TODO: Replace with your backend URL to handle Google ID token -->
+                 TODO: Replace with your backend URL to handle Google ID token 
             </div>
             <div class="g_id_signin"
                  data-type="standard"
@@ -44,7 +44,7 @@
                  data-logo_alignment="left">
             </div>
         </div>
-
+         -->
         <div class="signup-link">
             <a href="signup-page.html">Create an account</a>
         </div>
@@ -52,7 +52,7 @@
             <a href="home-page.html">Back to Home</a>
         </div>
     </div>
-    <!-- JavaScript to handle sign-in response / Eventually should put in its own file-->
+    <!-- JavaScript to handle sign-in response / Eventually should put in its own file
 <script>
     // TODO: Implement the function to handle Google sign-in credential response
     function handleCredentialResponse(response) {
@@ -74,7 +74,8 @@
             document.querySelector(".g_id_signin"),
             { theme: "outline", size: "large" }  // Customization for the button appearance
         );
-    }
+    }     
 </script>
+-->
 </body>
 </html>
