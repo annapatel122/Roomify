@@ -6,6 +6,7 @@ import {
 } from 'https://camisrutt.github.io/Roomifytest/Root/assets/js/firebase-init.js';
 import {
     createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     updateProfile,
   } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js';
 import {
