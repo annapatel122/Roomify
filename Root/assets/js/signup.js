@@ -14,9 +14,6 @@ import {
     setDoc,
   } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
 
-// Initialize Firestore
-const db = getFirestore();
-
 document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
