@@ -28,7 +28,10 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
         const user = userCredential.user;
 
         // Update the user's profile with the username
-        await updateProfile(user, { displayName: username });
+        await updateProfile(user, 
+            { 
+            displayName: username 
+            }).then(() => {window.location.href = 'https://camisrutt.github.io/Roomifytest/Root/html-pages/profile-dash.html';});
 
         // Save additional user data to Firestore
         await setDoc(doc(db, 'users', user.uid), {
@@ -41,8 +44,6 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
             moveInDate: '',
             budget: '',
             bio: ''
-        }).then(() => {
-            window.location.href = 'https://camisrutt.github.io/Roomifytest/Root/html-pages/profile-dash.html';
         });
         // redirect to profile-dash.html
 
