@@ -146,72 +146,27 @@
 </div>
 
 <!-- JavaScript to handle sign-in response / Eventually should put in its own file-->
+<!-- JavaScript to handle sign-in response / Eventually should put in its own file-->
 <script>
-    // Handle form submission
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('signupForm');
-        form.addEventListener('submit', handleSubmit);
-    });
-
-    async function handleSubmit(event) {
-        event.preventDefault();
-
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        // Simple frontend encryption (Note: This is not truly secure, only for demonstration)
-        const encryptedPassword = await encryptPassword(password);
-
-        try {
-            const response = await sendToServer(username, email, encryptedPassword);
-            if (response.ok) {
-                alert('Signup successful!');
-                // You can add code here to redirect to the login page or dashboard
-                // window.location.href = 'login.html';
-            } else {
-                const data = await response.json();
-                alert(`Signup failed: ${data.message}`);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred during signup');
-        }
-    }
-
-    async function encryptPassword(password) {
-        // This uses a simple Base64 encoding as an example
-        // In a real application, you should use a more secure encryption method, preferably on the server-side
-        return btoa(password);
-    }
-
-    async function sendToServer(username, email, encryptedPassword) {
-        const response = await fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, email, password: encryptedPassword }),
-        });
-        return response;
-    }
-
-    // Handle Google login
+    // TODO: Implement the function to handle Google sign-in credential response
     function handleCredentialResponse(response) {
-        console.log('Google ID Token:', response.credential);
-        // TODO: Send the Google ID token to the server-side for verification and processing
-        // You can use a function similar to sendToServer to send this token
+        // TODO: Send the credential to your backend for verification
+        console.log('ID Token: ' + response.credential);
+        
+        // TODO: Use AJAX or fetch to send the token to the server-side endpoint for verification
     }
 
     window.onload = function () {
+        // TODO: Initialize Google Sign-In with your Client ID
         google.accounts.id.initialize({
-            client_id: "YOUR_GOOGLE_CLIENT_ID",  // TODO: Replace with your actual Client ID
+            client_id: "YOUR_GOOGLE_CLIENT_ID",  // TODO: Replace with actual Client ID
             callback: handleCredentialResponse
         });
         
+        // TODO: Render the Google sign-in button
         google.accounts.id.renderButton(
             document.querySelector(".g_id_signin"),
-            { theme: "outline", size: "large" }
+            { theme: "outline", size: "large" }  // Customization for the button appearance
         );
     }
 </script>
