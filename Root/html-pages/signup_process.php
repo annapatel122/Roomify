@@ -7,58 +7,67 @@ error_reporting(E_ALL);
 
 // Database connection details
 $host = 'localhost';
-$db   = 'your_database_name';
-$user = 'your_database_username';
-$pass = 'your_database_password';
-$charset = 'utf8mb4';
+$port = 3306;
+$dbname = 'user_db';
+$username = 'root';
+$password = '';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
+// Main program logic
 try {
-    // Establish database connection
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    // Connect to the database
+    $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+    $pdo = new PDO($dsn, $username, $password, $options);
 
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve and sanitize input
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $username = trim($_POST['username'] ?? '');
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $password = $_POST['password']; // We'll hash this, so no need to sanitize
+        $password = $_POST['password'] ?? '';
 
         // Validate input
         if (empty($username) || empty($email) || empty($password)) {
             throw new Exception("All fields are required.");
         }
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new Exception("Invalid email format.");
+        // Additional username validation
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
+            throw new Exception("Username can only contain letters, numbers, and underscores.");
         }
 
-        // Check if username or email already exists
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-        $stmt->execute([$username, $email]);
-        if ($stmt->rowCount() > 0) {
-            throw new Exception("Username or email already exists.");
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Invalid email format.");
         }
 
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert user into the database
+        // Prepare SQL statement
         $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $stmt->execute([$username, $email, $hashed_password]);
 
-        // Redirect to success page or login page
-        header("Location: signup_success.php");
-        exit();
+        // Execute the statement
+        if ($stmt->execute([$username, $email, $hashed_password])) {
+            // User registered successfully, redirect to success page
+            header("Location: signup_success.html");
+            exit();
+        } else {
+            throw new Exception("Error occurred while registering user.");
+        }
+    }
+} catch (PDOException $e) {
+    // Handle database errors
+    if ($e->getCode() == '23000') {
+        echo "Error: Username or email already exists.";
+    } else {
+        echo "Database Error: " . $e->getMessage();
     }
 } catch (Exception $e) {
-    // Handle errors
+    // Handle other errors
     echo "Error: " . $e->getMessage();
 }
 ?>
