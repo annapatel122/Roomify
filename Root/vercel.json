@@ -26,6 +26,10 @@
       {
         "src": "/login",
         "dest": "/html-pages/login-page.html"
+      },
+      {
+        "src": "/background",
+        "dest": "/assets/css/background.css"
       }
     ]
   }
