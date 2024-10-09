@@ -7,14 +7,14 @@
     <!-- Google Font and CSS from homepage -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style-signup.css">
-    <link rel="stylesheet" href="/assets/css/background.css">
+    <link rel="stylesheet" href="/background">
 </head>
 
 <body>
 
 <div class="signup-container">
     <h2>Create Your Account</h2>
-    <form id="signup-form">
+    <form action="signup_process.php" method="POST">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
         
