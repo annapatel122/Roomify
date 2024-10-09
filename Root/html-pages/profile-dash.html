@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roomify - Your Peaceful Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-dash.css">
+    <link rel="stylesheet" href="/background">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="top-nav">
+        <div class="logo">
+            <h1><a href="home-page.html">Roomify</a></h1>
+        </div>
+    </header>
+
+
+
+        <!-- Display username when authenticated -->
+        <div class="nav-items">
+            <a href="edit-profile-button">Edit Profile</a>
+            <a href="#matches">Matches</a>
+            <a href="#messages">Messages</a>
+            <a href="#settings">Settings</a>
+            <div class="username">Hello, <span id="nav-username">[Username]</span></div>
+            <a href="logout.html" class="logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <div class="profile-section">
+            <!-- Profile Picture and Edit Option -->
+            <div class="profile-picture">
+                <img id="profile-pic" src="path_to_profile_picture.jpg" alt="Profile Picture">
+                <input type="file" id="profilePicInput" accept="image/*">
+                <label for="profilePicInput" class="edit-photo-button">Edit Photo</label>
+            </div>
+
+            <!-- Profile Information -->
+            <div class="profile-info">
+                <h2 id="user-fullname">[Full Name], [Age]</h2>
+                <p><strong>Occupation:</strong> <span id="user-occupation">[Occupation]</span></p>
+                <p><strong>Location:</strong> <span id="user-location">[Location]</span></p>
+                <p><strong>Gender:</strong> <span id="user-gender">[Gender]</span></p>
+                <p><strong>Move-in Date:</strong> <span id="user-movein-date">[Move-in Date]</span></p>
+                <p><strong>Budget:</strong> $<span id="user-budget">[Budget]</span></p>
+                <p><strong>About Me:</strong> <span id="user-bio">[Short Bio]</span></p>
+                <button class="edit-profile-button">Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- Find Your Roommate Button -->
+        <div class="find-roommate">
+            <a href="swipe-interface.html" class="find-roommate-button">Go Find Your Roommate!</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="#">About Us</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Contact Us</a>
+    </footer>
+</body>
+</html>
+
+
