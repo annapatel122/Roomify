@@ -6,7 +6,11 @@
         "use": "@vercel/static"
       },
       {
-        "src": "other-page.html",
+        "src": "html-pages/*.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "assets/css/*.css",
         "use": "@vercel/static"
       }
     ],
@@ -16,9 +20,14 @@
         "dest": "/home-page.html"
       },
       {
-        "src": "/other",
-        "dest": "/other-page.html"
+        "src": "/signup",
+        "dest": "/html-pages/signup-page.html"
+      },
+      {
+        "src": "/login",
+        "dest": "/html-pages/login-page.html"
       }
     ]
   }
+  
   
