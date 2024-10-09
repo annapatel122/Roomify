@@ -29,28 +29,6 @@
         
         <button type="submit">Sign Up</button>
     </form>
-
-    <!-- Google Sign-In Button -->
-    <!--
-    <div class="google-signin-button">
-        <div id="g_id_onload"
-            data-client_id="YOUR_GOOGLE_CLIENT_ID"  
-            data-context="signup"
-            data-ux_mode="popup"
-            data-login_uri="YOUR_BACKEND_URL"
-            data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin"
-             data-type="standard"
-             data-shape="rectangular"
-             data-theme="outline"
-             data-text="signup_with"
-             data-size="large"
-             data-logo_alignment="left">
-        </div>
-    </div>
-    -->
-
     <div class="login-link">
         <p>Already have an account? <a href="login-page.html">Login here</a></p>
     </div>
@@ -58,32 +36,5 @@
         <a href="home-page.html">Back to Home</a>
     </div>
 </div>
-    
-    <!-- JavaScript to handle sign-in response / Eventually should put in its own file
-<script>
-    // TODO: Implement the function to handle Google sign-in credential response
-    function handleCredentialResponse(response) {
-        // TODO: Send the credential to your backend for verification
-        console.log('ID Token: ' + response.credential);
-        
-        // TODO: Use AJAX or fetch to send the token to the server-side endpoint for verification
-    }
-
-    window.onload = function () {
-        // TODO: Initialize Google Sign-In with your Client ID
-        google.accounts.id.initialize({
-            client_id: "YOUR_GOOGLE_CLIENT_ID",  // TODO: Replace with actual Client ID
-            callback: handleCredentialResponse
-        });
-        
-        // TODO: Render the Google sign-in button
-        google.accounts.id.renderButton(
-            document.querySelector(".g_id_signin"),
-            { theme: "outline", size: "large" }  // Customization for the button appearance
-        );
-    }
-
-</script>
--->
 </body>
 </html>
