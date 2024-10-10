@@ -47,7 +47,7 @@ Feel free to update or modify these documents as necessary. We recommend adding 
 ## 🧪 Project Testing
 
 ### Homepage (Main Testing Site):
-- # [Roomify Homepage](https://roomify.vercel.app/)
+- # [Roomify Homepage](https://roomify-main.vercel.app/)
 
 - You can create your own test branches for isolated testing and stability checks.
 - # [**Cam's Test Branch**](https://roomifytest.vercel.app/)
