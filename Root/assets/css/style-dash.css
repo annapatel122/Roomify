@@ -42,9 +42,16 @@ body {
     font-size: 2rem;
 }
 
+.top-nav .nav-items {
+    display: flex;
+    align-items: center;
+}
+
 .top-nav .nav-items a {
     color: white;
     text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
@@ -56,7 +63,6 @@ body {
     margin-left: 20px;
     color: #a8d5ba;
     font-weight: bold;
-    transition: color 0.3s ease;
 }
 
 .top-nav .nav-items .username a:hover {
