@@ -30,6 +30,10 @@
       {
         "src": "/background",
         "dest": "/assets/css/background.css"
+      },
+      {
+        "src": "/navbar",
+        "dest": "/assets/css/nav-bar.css"
       }
     ]
   }
