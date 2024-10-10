@@ -1,53 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit Profile - Roomify</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Roomify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style-edit.css">
+    <link rel="stylesheet" href="/navbar">
     <link rel="stylesheet" href="/background">
 </head>
 <body>
-  <!-- Navigation Bar (similar to profile-dash.html) -->
-  <header class="top-nav">
-    <!-- ... your navigation items ... -->
-  </header>
+    <!-- Navigation Bar (similar to profile-dash.html) -->
+    <header class="top-nav">
+        <div class="logo">
+            <h1><a href="/">Roomify</a></h1>
+        </div>
+        <div class="nav-items">
+            <a href="/html-pages/profile-dash.html">Back To Dash</a>
+            <a href="#matches">Matches</a>
+            <a href="#messages">Messages</a>
+            <a href="#settings">Settings</a>
+            <div class="username">Hello, <span id="nav-username">[Username]</span></div>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+    </header>
 
-  <!-- Edit Profile Form -->
+    <!-- Edit Profile Form Section -->
+    <div class="main-container">
+        <div class="edit-profile-container">
+            <h2>Edit Your Profile</h2>
+            <form id="edit-profile-form">
+                <label for="displayName">Full Name</label>
+                <input type="text" id="displayName" name="displayName" required>
 
-  <form id="edit-profile-form">
-    <label for="displayName">Full Name</label>
-    <input type="text" id="displayName" name="displayName" required>
-  
-    <label for="occupation">Occupation</label>
-    <input type="text" id="occupation" name="occupation">
-  
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location">
-  
-    <label for="gender">Gender</label>
-    <input type="text" id="gender" name="gender">
-  
-    <label for="moveInDate">Move-in Date</label>
-    <input type="date" id="moveInDate" name="moveInDate">
-  
-    <label for="budget">Budget</label>
-    <input type="number" id="budget" name="budget">
-  
-    <label for="bio">About Me</label>
-    <textarea id="bio" name="bio"></textarea>
-  
-    <!-- Profile Picture Upload (Optional) -->
-    <label for="profilePicture">Profile Picture</label>
-    <input type="file" id="profilePicture" accept="image/*">
-  
-    <button type="submit">Save Changes</button>
-  </form>
-  </div>
+                <label for="occupation">Occupation</label>
+                <input type="text" id="occupation" name="occupation">
 
-  <!-- Footer -->
-  <footer class="footer">
-    <!-- ... your footer content ... -->
-  </footer>
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location">
+
+                <label for="gender">Gender</label>
+                <input type="text" id="gender" name="gender">
+
+                <label for="moveInDate">Move-in Date</label>
+                <input type="date" id="moveInDate" name="moveInDate">
+
+                <label for="budget">Budget</label>
+                <input type="number" id="budget" name="budget">
+
+                <label for="bio">About Me</label>
+                <textarea id="bio" name="bio"></textarea>
+
+                <label for="profilePicture">Profile Picture</label>
+                <input type="file" id="profilePicture" accept="image/*">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="#">About Us</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Contact Us</a>
+    </footer>
 </body>
 </html>

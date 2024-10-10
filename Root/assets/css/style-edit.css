@@ -5,43 +5,27 @@ body {
     padding: 0;
     background-color: #eef5f2;
     color: #333;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
-
-/* Navigation Bar */
-.top-nav {
-    background-color: #2b2b2b;
-    color: white;
-    padding: 15px 20px;
+/* Main Container */
+.main-container {
+    flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
-}
-
-.top-nav .nav-items a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.top-nav .nav-items a:hover {
-    color: #a8d5ba;
+    padding: 40px 20px;
 }
 
 /* Edit Profile Container */
 .edit-profile-container {
     background-color: white;
     border-radius: 15px;
+    padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 40px;
     max-width: 800px;
     width: 100%;
-    margin: 40px auto;
 }
 
 .edit-profile-container h2 {
@@ -54,29 +38,22 @@ body {
 .edit-profile-container form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 .edit-profile-container label {
     font-size: 1.1rem;
-    margin-bottom: 5px;
     color: #2b2b2b;
-    align-self: flex-start;
+    margin-bottom: 5px;
 }
 
-.edit-profile-container input, 
+.edit-profile-container input,
 .edit-profile-container textarea {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 15px;
-    width: 100%;
-    max-width: 600px;
-}
-
-.edit-profile-container input[type="file"] {
-    font-size: 0.9rem;
 }
 
 .edit-profile-container button {
@@ -95,25 +72,18 @@ body {
     background-color: #8bc6a9;
 }
 
-/* Profile Picture Styling */
-#profilePicture {
-    margin-bottom: 20px;
-}
-
 /* Footer */
 .footer {
     background-color: #2b2b2b;
     color: white;
     text-align: center;
     padding: 25px;
-    flex-shrink: 0;
 }
 
 .footer a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 0.9rem;
     transition: color 0.3s ease;
 }
 
@@ -125,10 +95,5 @@ body {
 @media (max-width: 768px) {
     .edit-profile-container {
         padding: 20px;
-        max-width: 100%;
     }
-
-    .edit-profile-container form {
-        align-items: stretch;
-    }
-} 
+}
