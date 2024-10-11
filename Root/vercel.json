@@ -41,7 +41,7 @@
       },
       {
         "src": "/logo",
-        "dest": "/assets/images/Roomifylogo.png"
+        "dest": "https://camisrutt.github.io/pages-pullbin/images/Roomifylogo.png"
       }
     ]
   }

@@ -22,7 +22,6 @@ header {
 header h1 {
     margin: 0;
     letter-spacing: 3px;
-    flex-grow: 1;
     animation: slideDown 3s ease;
 }
 /* Pastel arrow styling */
