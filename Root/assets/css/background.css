@@ -13,7 +13,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assets/Images/img_sketchhouses.jpg');
+    background-image: url('../assets/Images/img_sketchhouses.jpg');
     background-position: center;
     opacity: 0.25; /* Adjust the opacity to make the image faded */
     z-index: -1;
