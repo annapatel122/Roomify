@@ -12,6 +12,10 @@
       {
         "src": "assets/css/*.css",
         "use": "@vercel/static"
+      },
+      {
+        "src": "**/*.{html,css,js,jpg,png,gif,svg}",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
