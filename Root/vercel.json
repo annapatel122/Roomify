@@ -41,7 +41,7 @@
       },
       {
         "src": "/logo",
-        "dest": "/assets/Images/Roomifylogo.png"
+        "dest": "/assets/images/Roomifylogo.png"
       }
     ]
   }

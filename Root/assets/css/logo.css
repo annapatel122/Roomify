@@ -8,7 +8,7 @@
     width: auto;
     margin-right: 10px; /* Adds space between logo and text */
     image-rendering: auto;
-    background-image: image-set(url('../Images/Roomifylogo.png'));
+    background-image: image-set(url('/assets/images/Roomifylogo.png'));
 }
 
 .logo h1 {
