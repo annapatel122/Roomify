@@ -21,7 +21,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 5rem;
+    font-size: 4rem;
     letter-spacing: 3px;
     flex-grow: 1;
     animation: slideDown 3s ease;
