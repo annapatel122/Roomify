@@ -41,11 +41,11 @@
       },
       {
         "src": "/logocss",
-        "dest": "./assets/css/logo.css"
+        "dest": "/assets/css/logo.css"
       },
       {
         "src": "/logo",
-        "dest": "https://camisrutt.github.io/pages-pullbin/images/Roomifylogo.png"
+        "dest": "/assets/images/logo.png"
       }
     ]
   }
