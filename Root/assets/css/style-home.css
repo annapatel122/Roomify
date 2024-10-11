@@ -12,7 +12,6 @@ body {
 header {
     display: flex;
     align-items: center; /* Vertically centers the content inside the header */
-    justify-content: space-between; 
     position: relative;
     background-color: #2b2b2b;
     color: white;
@@ -22,6 +21,7 @@ header {
 
 header h1 {
     margin: 0;
+    position: absolute;
     font-size: 3rem;
     letter-spacing: 3px;
     animation: slideDown 3s ease;
