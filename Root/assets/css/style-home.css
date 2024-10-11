@@ -1,5 +1,4 @@
-/* <link rel="stylesheet" href="https://camisrutt.github.io/Roomifytest/Root/assets/css/style-home.css"> */
-/* alter the links ovb for whatever repo your on*/
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -16,11 +15,13 @@ header {
     padding: 20px;
     text-align: center;
 }
+
 header h1 {
     margin: 0;
     font-size: 3rem;
     letter-spacing: 3px;
-    animation: slideDown 2s ease;
+    flex-grow: 1;
+    animation: slideDown 3s ease;
 }
 /* Pastel arrow styling */
 .scroll-arrow {

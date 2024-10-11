@@ -9,7 +9,7 @@
     flex-shrink: 0;
 }
 /*Glows on hover*/
-.top-nav .logo a {
+.top-nav .logonav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
@@ -17,11 +17,11 @@
     transition: color 0.3s ease;
 }
 
-.top-nav .logo a:hover {
+.top-nav .logonav a:hover {
     color: #a8d5ba;
 }
 
-.top-nav .logo h1 {
+.top-nav .logonav h1 {
     margin: 0;
     font-size: 2rem;
 }
