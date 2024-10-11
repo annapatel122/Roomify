@@ -37,7 +37,7 @@
       },
       {
         "src": "/logocss",
-        "dest": "/assets/css/logo.css"
+        "dest": "./assets/css/logo.css"
       },
       {
         "src": "/logo",
