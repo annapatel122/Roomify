@@ -9,6 +9,7 @@
     margin-right: 10px; /* Adds space between logo and text */
     image-rendering: auto;
     background-image: url('https://camisrutt.github.io/pages-pullbin/images/Roomifylogo.png');
+    align-content: left;
 }
 
 .logo h1 {
