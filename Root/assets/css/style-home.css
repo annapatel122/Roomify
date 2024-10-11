@@ -11,8 +11,7 @@ body {
 }
 header {
     display: flex;
-    align-items: center; /* Vertically centers the content inside the header */
-    position: relative;
+    align-items: center;
     background-color: #2b2b2b;
     color: white;
     padding: 20px;
@@ -21,9 +20,9 @@ header {
 
 header h1 {
     margin: 0;
-    position: absolute;
     font-size: 3rem;
     letter-spacing: 3px;
+    flex-grow: 1;
     animation: slideDown 3s ease;
 }
 /* Pastel arrow styling */
