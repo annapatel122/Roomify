@@ -34,6 +34,14 @@
       {
         "src": "/navbar",
         "dest": "/assets/css/nav-bar.css"
+      },
+      {
+        "src": "/logocss",
+        "dest": "/assets/css/logo.css"
+      },
+      {
+        "src": "/logo",
+        "dest": "/assets/Images/Roomifylogo.png"
       }
     ]
   }
