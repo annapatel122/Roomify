@@ -1,4 +1,6 @@
 .logo {
+    position: absolute;
+    left: 20px; /* Adjust this based on your padding/margin */
     display: flex;
     align-items: center;
 }
