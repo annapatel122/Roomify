@@ -1,6 +1,6 @@
 .logo {
     display: flex;
-    align-items: left;
+    align-items: center;
 }
 
 .logo img {
@@ -21,5 +21,5 @@
 .logo a {
     text-decoration: none;
     display: flex;
-    align-items: left;
+    align-items: center;
 }
