@@ -169,19 +169,45 @@ function getPositionX(event) {
 }
 
 function handleSwipe(direction) {
+    const swipeContainer = document.querySelector('.swipe-container');
+
+    // Apply visual feedback
+    if (direction === 'right') {
+        // Like: Apply pastel green background
+        swipeContainer.classList.add('like');
+    } else {
+        // Nope: Apply pastel red background
+        swipeContainer.classList.add('nope');
+    }
+
+    // Proceed with the swipe animation and logic
     setTimeout(() => {
-        // Process the swipe
+        // Process the swipe result
         if (direction === 'right') {
             console.log('Matched with:', profiles[currentProfileIndex].name);
-            // Add match handling logic here
+            // TODO: Add match handling logic here
         } else {
             console.log('Rejected:', profiles[currentProfileIndex].name);
-            // Add rejection handling logic here
+            // TODO: Add rejection handling logic here
         }
 
-        // Load next profile
+        // Remove visual feedback after delay
+        setTimeout(() => {
+            // Remove 'like' and 'nope' classes
+            swipeContainer.classList.remove('like', 'nope');
+            // Add 'reset' class to transition back to original color
+            swipeContainer.classList.add('reset');
+
+            // Remove 'reset' class after transition
+            setTimeout(() => {
+                swipeContainer.classList.remove('reset');
+            }, 500); // This should match the CSS transition duration
+        }, 300); // Delay before removing visual feedback
+
+        // Load the next profile
         currentProfileIndex++;
         if (currentProfileIndex < profiles.length) {
+            // Reset card position and load new profile
             cardElement.style.transition = 'none';
             cardElement.style.transform = 'translateX(0) rotate(0)';
             loadProfile(profiles[currentProfileIndex]);

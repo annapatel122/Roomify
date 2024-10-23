@@ -23,6 +23,22 @@ body {
     padding: 20px;
 }
 
+.swipe-container.like {
+    background-color: #d4f8e8; /* Pastel green */
+    transition: background-color 0.5s ease;
+}
+
+.swipe-container.nope {
+    background-color: #f8d4d4; /* Pastel red */
+    transition: background-color 0.5s ease;
+}
+
+/* Reset background color */
+.swipe-container.reset {
+    background-color: #eef5f2; /* Original background color */
+    transition: background-color 0.5s ease;
+}
+
 .card {
     position: absolute;
     background-color: white;
