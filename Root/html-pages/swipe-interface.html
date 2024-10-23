@@ -1,11 +1,13 @@
+<!-- swipe-interface.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Roomify - Find Your Roommate</title>
     <link rel="stylesheet" href="../assets/css/style-swipe.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/background">
+    <link rel="stylesheet" href="/navbar">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -25,13 +27,20 @@
 
     <!-- Swipe Container -->
     <div class="swipe-container">
+        <!-- Left Arrow -->
+        <div class="arrow left-arrow" id="left-arrow">&#10094;</div>
+
+        <!-- Profile Card -->
         <div class="card" id="profile-card">
-            <img src="path_to_profile_picture.jpg" alt="Profile Picture">
+            <img src="images/default.jpg" alt="Profile Picture">
             <h2>[Full Name], [Age]</h2>
             <p><strong>Occupation:</strong> [Occupation]</p>
             <p><strong>Location:</strong> [Location]</p>
             <p><strong>About Me:</strong> [Short Bio]</p>
         </div>
+
+        <!-- Right Arrow -->
+        <div class="arrow right-arrow" id="right-arrow">&#10095;</div>
     </div>
 
     <!-- Footer -->

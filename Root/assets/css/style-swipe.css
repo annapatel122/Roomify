@@ -1,3 +1,5 @@
+/* style-swipe.css */
+
 /* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
@@ -47,6 +49,36 @@ body {
 .card p {
     font-size: 1rem;
     color: #666;
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: #2b2b2b;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+.arrow:hover {
+    background-color: #a8d5ba;
+    color: white;
 }
 
 /* Footer */
