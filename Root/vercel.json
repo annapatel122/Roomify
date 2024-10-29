@@ -47,6 +47,10 @@
         "src": "/logo",
         "dest": "/assets/images/logo.png"
       }
+     {
+        "src": "/signup_success",
+        "dest": "/assets/css/signup_success.css"
+    }
     ]
   }
   
