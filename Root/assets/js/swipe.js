@@ -1,4 +1,5 @@
 // Sample profiles data (Replace this with actual data from your database)
+let currentProfileIndex = 0;
 const profiles = [
     {
         name: "Alex Johnson",
@@ -64,18 +65,33 @@ const profiles = [
         bio: "Studying psychology, loves beach days.",
         image: "images/profile8.jpg"
     },
-    // Add more profiles as needed
+    {
+        name: "Sarah Johnson",
+        age: 24,
+        occupation: "Software Engineer",
+        location: "San Francisco, CA",
+        bio: "Looking for a clean, quiet apartment. I enjoy cooking and watching movies. Early riser and very organized!"
+    },
+    {
+        name: "Michael Chen",
+        age: 27,
+        occupation: "UX Designer",
+        location: "San Francisco, CA",
+        bio: "Creative professional seeking roommate with similar interests. Love art, music, and good conversation."
+    }
 ];
 
-let currentProfileIndex = 0;
-
 const cardElement = document.getElementById('profile-card');
+const container = document.getElementById('swipe-container');
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
 
 // Load the first profile
 loadProfile(profiles[currentProfileIndex]);
 
 function loadProfile(profile) {
-    cardElement.querySelector('img').src = profile.image;
+    cardElement.querySelector('img').src = profile.image || "";
     cardElement.querySelector('h2').textContent = `${profile.name}, ${profile.age}`;
     const infoParagraphs = cardElement.querySelectorAll('p');
     infoParagraphs[0].innerHTML = `<strong>Occupation:</strong> ${profile.occupation}`;
@@ -83,142 +99,94 @@ function loadProfile(profile) {
     infoParagraphs[2].innerHTML = `<strong>About Me:</strong> ${profile.bio}`;
 }
 
-// Swipe functionality variables
-let startX = 0;
-let currentX = 0;
-let isDragging = false;
-
-// Event listeners for drag/swipe
-cardElement.addEventListener('mousedown', startDrag);
-cardElement.addEventListener('touchstart', startDrag);
-
-cardElement.addEventListener('mousemove', onDrag);
-cardElement.addEventListener('touchmove', onDrag);
-
-cardElement.addEventListener('mouseup', endDrag);
-cardElement.addEventListener('touchend', endDrag);
+function updateProfile(index) {
+    if (index < profiles.length) {
+        loadProfile(profiles[index]);
+    } else {
+        cardElement.style.display = 'none';
+        alert('No more profiles to display.');
+    }
+}
 
 // Arrow buttons
-const leftArrow = document.getElementById('left-arrow');
-const rightArrow = document.getElementById('right-arrow');
-
-leftArrow.addEventListener('click', () => {
-    cardElement.style.transition = 'transform 0.3s ease';
-    cardElement.style.transform = 'translateX(-1000px) rotate(-30deg)';
-    handleSwipe('left');
+document.getElementById('left-arrow').addEventListener('click', () => {
+    container.classList.add('nope');
+    setTimeout(() => {
+        currentProfileIndex = (currentProfileIndex - 1 + profiles.length) % profiles.length;
+        updateProfile(currentProfileIndex);
+        container.classList.remove('nope');
+    }, 300);
 });
 
-rightArrow.addEventListener('click', () => {
-    cardElement.style.transition = 'transform 0.3s ease';
-    cardElement.style.transform = 'translateX(1000px) rotate(30deg)';
-    handleSwipe('right');
+document.getElementById('right-arrow').addEventListener('click', () => {
+    container.classList.add('like');
+    setTimeout(() => {
+        currentProfileIndex = (currentProfileIndex + 1) % profiles.length;
+        updateProfile(currentProfileIndex);
+        container.classList.remove('like');
+    }, 300);
 });
 
-// Keyboard controls
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
-        cardElement.style.transition = 'transform 0.3s ease';
-        cardElement.style.transform = 'translateX(-1000px) rotate(-30deg)';
-        handleSwipe('left');
-    } else if (event.key === 'ArrowRight') {
-        cardElement.style.transition = 'transform 0.3s ease';
-        cardElement.style.transform = 'translateX(1000px) rotate(30deg)';
-        handleSwipe('right');
-    }
-});
+// Touch and mouse events for card swiping
+cardElement.addEventListener('mousedown', startDragging);
+cardElement.addEventListener('touchstart', startDragging);
+document.addEventListener('mousemove', drag);
+document.addEventListener('touchmove', drag);
+document.addEventListener('mouseup', stopDragging);
+document.addEventListener('touchend', stopDragging);
 
-function startDrag(event) {
+function startDragging(event) {
     isDragging = true;
-    startX = getPositionX(event);
+    startX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
+    currentX = startX;
     cardElement.style.transition = 'none';
 }
 
-function onDrag(event) {
+function drag(event) {
     if (!isDragging) return;
-    currentX = getPositionX(event);
-    const deltaX = currentX - startX;
+    
+    const x = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX;
+    const deltaX = x - startX;
+    currentX = x;
     cardElement.style.transform = `translateX(${deltaX}px) rotate(${deltaX * 0.05}deg)`;
+
+    if (deltaX > 0) {
+        container.classList.add('like');
+        container.classList.remove('nope');
+    } else {
+        container.classList.add('nope');
+        container.classList.remove('like');
+    }
 }
 
-function endDrag(event) {
+function stopDragging() {
     if (!isDragging) return;
+    
     isDragging = false;
     const deltaX = currentX - startX;
     cardElement.style.transition = 'transform 0.3s ease';
-
-    if (deltaX > 150) {
-        // Swiped right
-        cardElement.style.transform = 'translateX(1000px) rotate(30deg)';
-        handleSwipe('right');
-    } else if (deltaX < -150) {
-        // Swiped left
-        cardElement.style.transform = 'translateX(-1000px) rotate(-30deg)';
-        handleSwipe('left');
+    
+    if (Math.abs(deltaX) > 100) {
+        if (deltaX > 0) {
+            document.getElementById('right-arrow').click();
+        } else {
+            document.getElementById('left-arrow').click();
+        }
     } else {
-        // Reset position
         cardElement.style.transform = 'translateX(0) rotate(0)';
+        container.classList.remove('like', 'nope');
     }
 }
 
-function getPositionX(event) {
-    if (event.type.startsWith('touch')) {
-        return event.touches[0].clientX;
-    } else {
-        return event.clientX;
+// Load user name from localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    const userData = JSON.parse(localStorage.getItem('userData')) || {};
+    if (userData.name) {
+        document.getElementById('nav-username').textContent = userData.name.split(' ')[0];
     }
-}
+});
 
-function handleSwipe(direction) {
-    const swipeContainer = document.querySelector('.swipe-container');
-
-    // Apply visual feedback
-    if (direction === 'right') {
-        // Like: Apply pastel green background
-        swipeContainer.classList.add('like');
-    } else {
-        // Nope: Apply pastel red background
-        swipeContainer.classList.add('nope');
-    }
-
-    // Proceed with the swipe animation and logic
-    setTimeout(() => {
-        // Process the swipe result
-        if (direction === 'right') {
-            console.log('Matched with:', profiles[currentProfileIndex].name);
-            // TODO: Add match handling logic here
-        } else {
-            console.log('Rejected:', profiles[currentProfileIndex].name);
-            // TODO: Add rejection handling logic here
-        }
-
-        // Remove visual feedback after delay
-        setTimeout(() => {
-            // Remove 'like' and 'nope' classes
-            swipeContainer.classList.remove('like', 'nope');
-            // Add 'reset' class to transition back to original color
-            swipeContainer.classList.add('reset');
-
-            // Remove 'reset' class after transition
-            setTimeout(() => {
-                swipeContainer.classList.remove('reset');
-            }, 500); // This should match the CSS transition duration
-        }, 300); // Delay before removing visual feedback
-
-        // Load the next profile
-        currentProfileIndex++;
-        if (currentProfileIndex < profiles.length) {
-            // Reset card position and load new profile
-            cardElement.style.transition = 'none';
-            cardElement.style.transform = 'translateX(0) rotate(0)';
-            loadProfile(profiles[currentProfileIndex]);
-
-            // Reset drag positions
-            startX = 0;
-            currentX = 0;
-        } else {
-            // No more profiles
-            cardElement.style.display = 'none';
-            alert('No more profiles to display.');
-        }
-    }, 300); // Wait for the swipe-out animation to finish
+function logout() {
+    localStorage.removeItem('userData');
+    window.location.href = 'login-page.html';
 }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful - Roomify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    //Ovb put in stylesheet
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f7f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/ZihanG0/Roomifybeta/refs/heads/main/Root/assets/images/background.jpg');
+            background-position: center;
+            opacity: 0.25;
+            z-index: -1;
+        }
+        .success-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+        .success-container h2 {
+            text-align: center;
+            color: #2b2b2b;
+            margin-bottom: 20px;
+        }
+        .success-container p {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login-button {
+            display: inline-block;
+            background-color: #2b2b2b;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .login-button:hover {
+            background-color: #555555;
+            transform: translateY(-5px);
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-to-home a {
+            color: #a8d5ba;
+            text-decoration: none;
+        }
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h2>Login Successful!</h2>
+        <p>Welcome back to Roomify. You have been logged in successfully.</p>
+        <a href="/projects/dashboard.html" class="login-button" onclick="navigateToDashboard(event)">Go to Dashboard</a>
+        <div class="back-to-home">
+            <a href="/projects/home-page.html">Back to Home</a>
+        </div>
+    </div>
+    //TODO:Put in seperate file
+    <script>
+        // 存储当前登录用户信息
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        if (username) {
+            localStorage.setItem('username', username);
+            sessionStorage.setItem('username', username);
+            console.log('Username stored:', username);
+        }
+
+        // 修改导航函数使用正确的路径
+        function navigateToDashboard(event) {
+            event.preventDefault();
+            
+            const storedUsername = localStorage.getItem('username') || sessionStorage.getItem('username');
+            console.log('Attempting to navigate with username:', storedUsername);
+            
+            if (storedUsername) {
+                // 使用正确的服务器路径
+                window.location.href = '/projects/dashboard.html';
+            } else {
+                console.log('No username found, redirecting to login...');
+                window.location.href = '/projects/login-page.html';
+            }
+        }
+
+        // 添加错误处理和调试信息
+        window.onerror = function(msg, url, line) {
+            console.log('Error: ' + msg);
+            console.log('URL: ' + url);
+            console.log('Line: ' + line);
+            return false;
+        };
+    </script>
+</body>
+</html>

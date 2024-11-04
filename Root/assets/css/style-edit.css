@@ -9,8 +9,8 @@ body {
     display: flex;
     flex-direction: column;
 }
-/* Main Container */
-.main-container {
+ /* Main Container */
+ .main-container {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -35,40 +35,62 @@ body {
     text-align: center;
 }
 
-.edit-profile-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+.form-group {
+    margin-bottom: 20px;
 }
 
-.edit-profile-container label {
+.form-group label {
+    display: block;
     font-size: 1.1rem;
     color: #2b2b2b;
     margin-bottom: 5px;
 }
 
-.edit-profile-container input,
-.edit-profile-container textarea {
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.edit-profile-container button {
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.photo-upload {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.photo-upload img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.save-button {
     background-color: #a8d5ba;
     color: #2b2b2b;
     border: none;
-    padding: 10px 25px;
+    padding: 12px 30px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+    font-size: 1.1rem;
     font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+    width: fit-content;
 }
 
-.edit-profile-container button:hover {
+.save-button:hover {
     background-color: #8bc6a9;
 }
 
@@ -78,12 +100,14 @@ body {
     color: white;
     text-align: center;
     padding: 25px;
+    margin-top: auto;
 }
 
 .footer a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
+    font-size: 0.9rem;
     transition: color 0.3s ease;
 }
 
@@ -91,9 +115,13 @@ body {
     color: #a8d5ba;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .edit-profile-container {
         padding: 20px;
     }
+}
+.hidden {
+
+    display: none;
+
 }
