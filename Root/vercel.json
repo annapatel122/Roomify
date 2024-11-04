@@ -7,6 +7,10 @@
   },
   "routes": [
     {
+      "src": "/html-pages/(.*)",
+      "dest": "/html-pages/$1"
+    },
+    {
       "src": "/",
       "dest": "/home-page.html"
     },
