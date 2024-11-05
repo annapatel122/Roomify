@@ -1,12 +1,12 @@
 const mysql = require('mysql2');
 
-// Create a connection to the RDS database
+// Create a connection to the RDS database using environment variables
 const connection = mysql.createConnection({
-  host: 'roomify-user-db.cby488i6k81t.us-east-1.rds.amazonaws.com', // RDS endpoint
-  user: 'samiller1109', // Master username
-  password: 'fKxrA-2huA-9tpdq', // Master password
-  database: 'roomify-user-db', // Database name
-  port: 3306  // default MySQL port
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306  // Use 3306 as the default port
 });
 
 // Connect to the database
