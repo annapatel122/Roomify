@@ -1,11 +1,31 @@
 {
-    "version": 2,
-    "functions": {
+  "version": 2,
+  "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.3"
     }
   },
   "routes": [
+    {
+      "src": "/api/check_password",
+      "dest": "/api/check_password.php"
+    },
+    {
+      "src": "/api/login_process",
+      "dest": "/api/login_process.php"
+    },
+    {
+      "src": "/api/password_hash",
+      "dest": "/api/password_hash.php"
+    },
+    {
+      "src": "/api/password_verify",
+      "dest": "/api/password_verify.php"
+    },
+    {
+      "src": "/api/signup_process",
+      "dest": "/api/signup_process.php"
+    },
     {
       "src": "/html-pages/(.*)",
       "dest": "/html-pages/$1"

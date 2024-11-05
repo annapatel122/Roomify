@@ -16,7 +16,7 @@
 
     <div class="signup-container">
         <h2>Create Your Account</h2>
-        <form id="signupForm" action="signup_process.php" method="POST">
+        <form id="signupForm" action="/api/signup_process" method="POST">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
             
@@ -55,7 +55,7 @@
             <a href="home-page.html">Back to Home</a>
         </div>
     </div>
-    //TODO: Put ins a script sheet
+    <!-- TODO: Put ins a script sheet -->
     <script>
         function handleCredentialResponse(response) {
             console.log('Google ID Token:', response.credential);

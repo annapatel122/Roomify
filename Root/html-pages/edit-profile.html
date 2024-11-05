@@ -12,15 +12,15 @@
 <body>
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="/projects/dashboard.html">Roomify</a></h1>
+            <h1><a href="/profile-dash.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="/projects/dashboard.html">Back To Dash</a>
+            <a href="/profile-dash.html">Back To Dash</a>
             <a href="#matches">Matches</a>
             <a href="#messages">Messages</a>
             <a href="#settings">Settings</a>
             <span class="username">Hello, <span id="nav-username">User</span></span>
-            <a href="/projects/login-page.html" class="logout" onclick="logout()">Logout</a>
+            <a href="/login" class="logout" onclick="logout()">Logout</a>
         </div>
     </nav>
 
@@ -29,7 +29,7 @@
             <h2>Edit Your Profile</h2>
             <form id="editProfileForm" onsubmit="saveChanges(event)">
                 <div class="photo-upload">
-                    <img src="/api/placeholder/250/200" alt="Profile Picture" id="profile-pic">
+                    <img src="../assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
                     <input type="file" id="photo-upload" class="hidden" accept="image/*" title="Upload Profile Picture">
                     <button type="button" onclick="document.getElementById('photo-upload').click()">Change Photo</button>
                 </div>
@@ -163,7 +163,7 @@
         function logout() {
             localStorage.removeItem('userData');
             localStorage.removeItem('profilePicture');
-            window.location.href = '/projects/login-page.html';
+            window.location.href = '/login';
         }
     </script>
 </body>
