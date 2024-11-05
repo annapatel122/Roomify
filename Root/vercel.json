@@ -7,23 +7,23 @@
   },
   "routes": [
     {
-      "src": "/api/check_password",
+      "src": "https://roomifytest.vercel.app/api/check_password",
       "dest": "/api/check_password.php"
     },
     {
-      "src": "/api/login_process",
+      "src": "https://roomifytest.vercel.app/api/login_process",
       "dest": "/api/login_process.php"
     },
     {
-      "src": "/api/password_hash",
+      "src": "https://roomifytest.vercel.app/api/password_hash",
       "dest": "/api/password_hash.php"
     },
     {
-      "src": "/api/password_verify",
+      "src": "https://roomifytest.vercel.app/api/password_verify",
       "dest": "/api/password_verify.php"
     },
     {
-      "src": "/api/signup_process",
+      "src": "https://roomifytest.vercel.app/api/signup_process",
       "dest": "/api/signup_process.php"
     },
     {
