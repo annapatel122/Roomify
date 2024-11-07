@@ -66,6 +66,12 @@ Feel free to update or modify these documents as necessary. We recommend adding 
 
 ---
 
+## Test account
+
+Username: Jzp717-Admin
+Email: Jzp717@mocs.utc.edu
+Password: testtest
+
 ## 💡 Tips for the Team
 
 - Always comment your code thoroughly for easy collaboration.

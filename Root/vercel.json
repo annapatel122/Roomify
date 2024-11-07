@@ -1,61 +1,70 @@
 {
-    "version": 2,
-    "functions": {
-      "api/*.php": {
-        "runtime": "vercel-php@0.7.3"
-      }
+  "version": 2,
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.3"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/check_password",
+      "dest": "/api/check_password.php"
     },
-    "builds": [
-      
-      { "src": "/(.*)", "dest": "/api/index.php"},
-
-      {
-        "src": "home-page.html",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "html-pages/*.html",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "assets/css/*.css",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "**/*.{html,css,js,jpg,png,gif,svg}",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/",
-        "dest": "/home-page.html"
-      },
-      {
-        "src": "/signup",
-        "dest": "/html-pages/signup-page.html"
-      },
-      {
-        "src": "/login",
-        "dest": "/html-pages/login-page.html"
-      },
-      {
-        "src": "/background",
-        "dest": "/assets/css/background.css"
-      },
-      {
-        "src": "/navbar",
-        "dest": "/assets/css/nav-bar.css"
-      },
-      {
-        "src": "/logocss",
-        "dest": "/assets/css/logo.css"
-      },
-      {
-        "src": "/logo",
-        "dest": "/assets/images/logo.png"
-      }
-    ]
-  }
-  
-  
+    {
+      "src": "/api/login_process",
+      "dest": "/api/login_process.php"
+    },
+    {
+      "src": "/api/password_hash",
+      "dest": "/api/password_hash.php"
+    },
+    {
+      "src": "/api/password_verify",
+      "dest": "/api/password_verify.php"
+    },
+    {
+      "src": "/api/signup_process",
+      "dest": "/api/signup_process.php"
+    },
+    {
+      "src": "/html-pages/(.*)",
+      "dest": "/html-pages/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/home-page.html"
+    },
+    {
+      "src": "/signup",
+      "dest": "/html-pages/signup-page.html"
+    },
+    {
+      "src": "/login",
+      "dest": "/html-pages/login-page.html"
+    },
+    {
+      "src": "/background",
+      "dest": "/assets/css/background.css"
+    },
+    {
+      "src": "/navbar",
+      "dest": "/assets/css/nav-bar.css"
+    },
+    {
+      "src": "/logocss",
+      "dest": "/assets/css/logo.css"
+    },
+    {
+      "src": "/logo",
+      "dest": "/assets/images/logo.png"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}

@@ -13,20 +13,41 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form id="login-form" method="post">
+        <!-- 错误消息框 -->
+        <div id="errorMessage" class="error-message">
+            Invalid username or password
+        </div>
+        
+        <!-- 表单提交到 check_password.php -->
+        <form action="/api/check_password" method="post">
             <label for="username">Username</label>
-                <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Username" required>
             <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Log In</button>    
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
         </form>
 
         <div class="signup-link">
-            <a href="/signup">Create an account</a>
+            <a href="signup-page.html">Create an account</a>
         </div>
         <div class="back-to-homepage">
-            <a href="/">Back to Home</a>
+            <a href="home-page.html">Back to Home</a>
         </div>
     </div>
+
+    <script>
+        // 检查URL参数是否包含错误标志，并显示错误消息
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+
+            // 清除之前可能存在的会话
+            sessionStorage.clear();
+            localStorage.clear();
+        }
+    </script>
 </body>
 </html>
+

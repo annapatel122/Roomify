@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomify - Find Your Roommate</title>
     <link rel="stylesheet" href="../assets/css/style-swipe.css">
     <link rel="stylesheet" href="/background">
@@ -10,45 +11,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header class="top-nav">
+    <nav class="top-nav">
         <div class="logonav">
             <h1><a href="/">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="/html-pages/edit-profile.html">Edit Profile</a>
+            <a href="edit-profile.html">Edit Profile</a>
             <a href="#matches">Matches</a>
             <a href="#messages">Messages</a>
             <a href="#settings">Settings</a>
-            <div class="username">Hello, <span id="nav-username">[Username]</span></div>
-            <a href="logout.html" class="logout">Logout</a>
+            <span class="username">Hello, <span id="nav-username">User</span></span>
+            <a href="login-page.html" class="logout" onclick="logout()">Logout</a>
         </div>
-    </header>
+    </nav>
 
-    <!-- Swipe Container -->
-    <div class="swipe-container">
-        <!-- Left Arrow -->
-        <div class="arrow left-arrow" id="left-arrow">&#10094;</div>
-
-        <!-- Profile Card -->
+    <div class="swipe-container" id="swipe-container">
+        <div class="arrow left-arrow" id="left-arrow">❮</div>
+        
         <div class="card" id="profile-card">
-            <img src="images/default.jpg" alt="Profile Picture">
-            <h2>[Full Name], [Age]</h2>
-            <p><strong>Occupation:</strong> [Occupation]</p>
-            <p><strong>Location:</strong> [Location]</p>
-            <p><strong>About Me:</strong> [Short Bio]</p>
+            <img src="/assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
+            <h2>Sarah Johnson, 24</h2>
+            <p><strong>Occupation:</strong> Software Engineer</p>
+            <p><strong>Location:</strong> San Francisco, CA</p>
+            <p><strong>About Me:</strong> Looking for a clean, quiet apartment. I enjoy cooking and watching movies. Early riser and very organized!</p>
         </div>
 
-        <!-- Right Arrow -->
-        <div class="arrow right-arrow" id="right-arrow">&#10095;</div>
+        <div class="arrow right-arrow" id="right-arrow">❯</div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Roomify. All rights reserved.</p>
-        <a href="#">About Us</a> |
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Contact Us</a>
+        <p>© 2024 Roomify. All rights reserved.</p>
+        <div>
+            <a href="#about">About Us</a> |
+            <a href="#privacy">Privacy Policy</a> |
+            <a href="#contact">Contact Us</a>
+        </div>
     </footer>
 
     <!-- JavaScript -->

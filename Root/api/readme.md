@@ -10,6 +10,12 @@ Here's how it generally works:
     Any PHP file you place in the api folder (e.g., api/example.php) will be accessible via a URL like https://your-vercel-project.vercel.app/api/example.
     The api/index.php file will act as the main entry point for all requests if you want centralized routing.
     
+    There will be routes within vercel.json that link to all the php files for ease of connectivity
+
+    I believe these will have to be switched out between projects
+    --- 
+    Anna's Main - http://roomify-main.vercel.app/api/example
+    Roomify Test - https://roomifytest.vercel.app/api/example.
 ### Configuration Explanation
 
 The following configuration code is used to deploy a PHP project on Vercel:
