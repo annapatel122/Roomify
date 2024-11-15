@@ -1,0 +1,217 @@
+:root {
+    /* Light mode colors */
+    --bg-color-light: #eef5f2;
+    --text-color-light: #333;
+    --nav-bg-light: #2b2b2b;
+    --card-bg-light: white;
+    --accent-color-light: #a8d5ba;
+    --hover-color-light: #8bc6a9;
+    --form-bg-light: white;
+    --form-text-light: #2b2b2b;
+    --form-border-light: #ddd;
+    --input-bg-light: white;
+    
+    /* Dark mode colors */
+    --bg-color-dark: #1a1a1a;
+    --text-color-dark: #ffffff;
+    --nav-bg-dark: #000000;
+    --card-bg-dark: #2b2b2b;
+    --accent-color-dark: #8bc6a9;
+    --hover-color-dark: #6b9c83;
+    --form-bg-dark: #333333;
+    --form-text-dark: #ffffff;
+    --form-border-dark: #444;
+    --input-bg-dark: #333333;
+}
+
+/* Base theme styles */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode (default) */
+body.light-mode {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Navigation styles */
+body.dark-mode .top-nav {
+    background-color: var(--nav-bg-dark);
+}
+
+/* Container styles */
+body.dark-mode .profile-section,
+body.dark-mode .settings-container,
+body.dark-mode .modal-content,
+body.dark-mode .edit-profile-container {
+    background-color: var(--card-bg-dark);
+    color: var(--text-color-dark);
+}
+
+/* Form styles */
+body.dark-mode .form-group label {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: var(--input-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--form-border-dark);
+}
+
+/* Edit Profile specific styles */
+body.dark-mode .edit-profile-form {
+    background-color: var(--card-bg-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .edit-profile-container {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .form-input {
+    background-color: var(--input-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--form-border-dark);
+}
+
+body.dark-mode .edit-profile-title {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .change-photo-btn,
+body.dark-mode .save-profile-btn {
+    background-color: var(--accent-color-dark);
+    color: white;
+}
+
+/* Input focus states */
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: var(--accent-color-dark);
+    outline: none;
+    box-shadow: 0 0 5px rgba(139, 198, 169, 0.3);
+}
+
+/* Placeholder styles */
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #888;
+}
+
+/* Online status indicators */
+body.dark-mode .online-indicator {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .online .status-text {
+    color: var(--accent-color-dark);
+}
+
+body.dark-mode .offline .status-text {
+    color: #888;
+}
+
+/* Footer styles */
+body.dark-mode .footer {
+    background-color: var(--nav-bg-dark);
+}
+/* Edit Profile Title Styles */
+body.dark-mode .edit-profile-title,
+body.dark-mode .edit-your-profile {
+    color: white;  /* 深色模式下文字为白色 */
+}
+
+body.light-mode .edit-profile-title,
+body.light-mode .edit-your-profile {
+    color: #333;  /* 浅色模式下文字为深色 */
+}
+
+/* Edit Profile Container Styles */
+.edit-profile-container {
+    padding: 30px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .edit-profile-container {
+    background-color: var(--card-bg-dark);
+    color: var(--text-color-dark);
+}
+
+body.light-mode .edit-profile-container {
+    background-color: var(--card-bg-light);
+    color: var(--text-color-light);
+}
+
+/* Form Labels and Fields */
+body.dark-mode .edit-profile-container label {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .edit-profile-container input,
+body.dark-mode .edit-profile-container select,
+body.dark-mode .edit-profile-container textarea {
+    background-color: var(--form-bg-dark);
+    color: var(--text-color-dark);
+    border-color: var(--form-border-dark);
+}
+
+/* Main title style */
+.edit-your-profile {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.edit-profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 标题样式 */
+.edit-profile-title {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* User name styling */
+#user-fullname {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Light mode */
+body.light-mode #user-fullname {
+    color: #333;
+}
+
+/* Dark mode */
+body.dark-mode #user-fullname {
+    color: white;
+}
+
+/* Empty state */
+#user-fullname.empty-field {
+    color: #888;
+    font-style: italic;
+}
