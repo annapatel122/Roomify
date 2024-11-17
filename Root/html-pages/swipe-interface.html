@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomify - Find Your Roommate</title>
     <link rel="stylesheet" href="../assets/css/style-swipe.css">
-    <link rel="stylesheet" href="/background">
-    <link rel="stylesheet" href="/navbar">
+    <link rel="stylesheet" href="../assets/css/background.css">
+    <link rel="stylesheet" href="../assets/css/nav-bar.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="/">Roomify</a></h1>
+            <h1><a href="../home-page.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="edit-profile.html">Edit Profile</a>
-            <a href="#matches">Matches</a>
-            <a href="#messages">Messages</a>
-            <a href="#settings">Settings</a>
+            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="./matches.html">Matches</a>
+            <a href="./messages.html">Messages</a>
+            <a href="./settings.html">Settings</a>
             <span class="username">Hello, <span id="nav-username">User</span></span>
-            <a href="login-page.html" class="logout" onclick="logout()">Logout</a>
+            <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
         </div>
     </nav>
 
@@ -29,7 +29,7 @@
         <div class="arrow left-arrow" id="left-arrow">❮</div>
         
         <div class="card" id="profile-card">
-            <img src="/assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
+            <img src="../assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
             <h2>Sarah Johnson, 24</h2>
             <p><strong>Occupation:</strong> Software Engineer</p>
             <p><strong>Location:</strong> San Francisco, CA</p>
@@ -40,11 +40,15 @@
     </div>
 
     <footer class="footer">
-        <p>© 2024 Roomify. All rights reserved.</p>
-        <div>
-            <a href="#about">About Us</a> |
-            <a href="#privacy">Privacy Policy</a> |
-            <a href="#contact">Contact Us</a>
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="./about.html">About Us</a> | 
+        <a href="./privacy.html">Privacy Policy</a> | 
+        <a href="./contact.html">Contact Us</a>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
+            <!-- CHange link from twitter png to bluesky -->
+            <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
+            <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
         </div>
     </footer>
 

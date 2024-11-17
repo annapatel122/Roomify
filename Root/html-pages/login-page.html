@@ -7,7 +7,7 @@
     <!-- Google Font and CSS from homepage -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style-login.css">
-    <link rel="stylesheet" href="/background">
+    <link rel="stylesheet" href="../assets/css/background.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         </div>
         
         <!-- 表单提交到 check_password.php -->
-        <form action="/api/check_password" method="post">
+        <form action="../api/check_password.php" method="post">
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="Username" required>
             <label for="password">Password</label>
@@ -28,10 +28,10 @@
         </form>
 
         <div class="signup-link">
-            <a href="signup-page.html">Create an account</a>
+            <a href="./signup-page.html">Create an account</a>
         </div>
         <div class="back-to-homepage">
-            <a href="home-page.html">Back to Home</a>
+            <a href="../home-page.html">Back to Home</a>
         </div>
     </div>
 

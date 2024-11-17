@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches - Roomify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-dash.css">
+    <link rel="stylesheet" href="../assets/css/nav-bar.css">
+    <link rel="stylesheet" href="../assets/css/background.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logonav">
+            <h1><a href="../home-page.html">Roomify</a></h1>
+        </div>
+        <div class="nav-items">
+            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="./profile-dash.html">Back To Dash</a>
+            <a href="./messages.html">Messages</a>
+            <a href="./settings.html">Settings</a>
+            <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
+            <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <h2>Your Matches</h2>
+        <div class="matches-section">
+            <!-- Placeholder for matched user cards -->
+            <div class="match-card">
+                <img src="../assets/images/default-profile.png" alt="Match Profile Picture">
+                <div class="match-info">
+                    <h3>User Name</h3>
+                    <p>Location: City</p>
+                    <p>Shared Interests: Cooking, Hiking</p>
+                    <a href="./messages.html" class="message-button">Message</a>
+                </div>
+            </div>
+            <!-- Additional match cards can be added dynamically -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="./about.html">About Us</a> | 
+        <a href="./privacy.html">Privacy Policy</a> | 
+        <a href="./contact.html">Contact Us</a>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
+            <!-- CHange link from twitter png to bluesky -->
+            <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
+            <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

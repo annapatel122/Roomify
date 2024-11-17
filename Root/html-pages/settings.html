@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Roomify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-dash.css">
+    <link rel="stylesheet" href="../assets/css/nav-bar.css">
+    <link rel="stylesheet" href="../assets/css/background.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logonav">
+            <h1><a href="../home-page.html">Roomify</a></h1>
+        </div>
+        <div class="nav-items">
+            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="./matches.html">Matches</a>
+            <a href="./messages.html">Messages</a>
+            <a href="./profile-dash.html">Back To Dash</a>
+            <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
+            <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <h2>Settings</h2>
+        <section class="settings-section">
+            <!-- Account Settings -->
+            <div class="settings-category">
+                <h3>Account Settings</h3>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter new password">
+                </div>
+                <button class="save-button">Save Changes</button>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-category">
+                <h3>Notification Settings</h3>
+                <div class="form-group">
+                    <input type="checkbox" id="email-notifications">
+                    <label for="email-notifications">Email Notifications</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="sms-notifications">
+                    <label for="sms-notifications">SMS Notifications</label>
+                </div>
+                <button class="save-button">Update Notifications</button>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="settings-category">
+                <h3>Privacy Settings</h3>
+                <div class="form-group">
+                    <input type="checkbox" id="public-profile">
+                    <label for="public-profile">Make Profile Public</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="share-activity">
+                    <label for="share-activity">Share Activity with Matches</label>
+                </div>
+                <button class="save-button">Save Privacy Preferences</button>
+            </div>
+
+            <!-- Other Settings -->
+            <div class="settings-category">
+                <h3>Other Settings</h3>
+                <div class="form-group">
+                    <label for="language">Language:</label>
+                    <select id="language">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <!-- Add more languages as needed -->
+                    </select>
+                </div>
+                <button class="save-button">Save Preferences</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="./about.html">About Us</a> | 
+        <a href="./privacy.html">Privacy Policy</a> | 
+        <a href="./contact.html">Contact Us</a>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
+            <!-- CHange link from twitter png to bluesky -->
+            <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
+            <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

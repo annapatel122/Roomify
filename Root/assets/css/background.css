@@ -13,7 +13,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assets/images/background.jpg'); /* Add the path to your background image */
+    background-image: url('/Root/assets/images/background.jpg'); /* Add the path to your background image */
     background-position: center;
     opacity: 0.25; /* Adjust the opacity to make the image faded */
     z-index: -1;

@@ -6,20 +6,20 @@
     <title>Roomify - Your Peaceful Space</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style-dash.css">
-    <link rel="stylesheet" href="/navbar">
-    <link rel="stylesheet" href="/background">
+    <link rel="stylesheet" href="../assets/css/background.css">
+    <link rel="stylesheet" href="../assets/css/nav-bar.css">
 </head>
 <body>
     <!-- Previous navigation code remains the same -->
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="/">Roomify</a></h1>
+            <h1><a href="../home-page.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="/html-pages/edit-profile.html">Edit Profile</a>
-            <a href="#matches">Matches</a>
-            <a href="#messages">Messages</a>
-            <a href="#settings">Settings</a>
+            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="./matches.html">Matches</a>
+            <a href="./messages.html">Messages</a>
+            <a href="./settings.html">Settings</a>
             <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
             <a href="login-page.html" class="logout" onclick="logout()">Logout</a>
         </div>
@@ -45,7 +45,7 @@
         </section>
 
         <div class="find-roommate">
-    <a href="/swipe-interface.html" class="find-roommate-button">Go Find Your Roommate!</a>
+    <a href="./swipe-interface.html" class="find-roommate-button">Go Find Your Roommate!</a>
 </div>
     </main>
 
@@ -100,14 +100,18 @@
     </div>
 
     <footer class="footer">
-        <p>© 2024 Roomify. All rights reserved.</p>
-        <div>
-            <a href="#about">About Us</a> |
-            <a href="#privacy">Privacy Policy</a> |
-            <a href="#contact">Contact Us</a>
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="./about.html">About Us</a> | 
+        <a href="./privacy.html">Privacy Policy</a> | 
+        <a href="./contact.html">Contact Us</a>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
+            <!-- CHange link from twitter png to bluesky -->
+            <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
+            <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
         </div>
     </footer>
-// Move script to independent file
+
     <script>
         // Load user data from localStorage on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -207,7 +211,7 @@
             localStorage.removeItem('userData');
             localStorage.removeItem('profilePicture');
             // Redirect to login page
-            window.location.href = 'login-page.html';
+            window.location.href = '/Root/html-pages/login-page.html';
         }
     </script>
 </body>

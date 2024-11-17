@@ -80,7 +80,6 @@ body {
     text-align: center;
     border-radius: 50%;
     cursor: pointer;
-    user-select: none;
     transform: translateY(-50%);
 }
 
