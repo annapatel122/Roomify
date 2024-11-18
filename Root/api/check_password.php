@@ -3,7 +3,7 @@ session_start();
 
 // 数据库连接配置
 $host = 'localhost';
-$dbname = 'user_db';  // 确保数据库名称与实际一致
+$dbname = 'roomify_db';  // 确保数据库名称与实际一致
 $db_username = 'root';
 $db_password = '';
 

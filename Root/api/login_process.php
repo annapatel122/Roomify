@@ -6,7 +6,7 @@ $password = $_POST['password'] ?? '';
 
 $host = 'localhost';
 $port = 3306;
-$dbname = 'user_db';
+$dbname = 'roomify_db';
 $db_username = 'root';
 $db_password = '';
 
