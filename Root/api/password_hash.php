@@ -9,7 +9,7 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
 $servername = "localhost";
-$dbname = "roomify_db";
+$dbname = "user_db";
 $db_username = "your_db_username"; 
 $db_password = "your_db_password"; 
 

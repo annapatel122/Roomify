@@ -1,8 +1,8 @@
 -- Create the database
-CREATE DATABASE roomify_db;
+CREATE DATABASE user_db;
 
 -- Select the database
-USE roomify_db;
+USE user_db;
 
 -- Create the users table
 CREATE TABLE users (
@@ -19,7 +19,7 @@ CREATE TABLE user_settings (
     user_id INT NOT NULL,
     setting_key VARCHAR(50) NOT NULL,
     setting_value TEXT,
-    updated_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE KEY unique_user_setting (user_id, setting_key)
 );

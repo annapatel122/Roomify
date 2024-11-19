@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 // Database connection details
 $host = 'localhost';
 $port = 3306;
-$dbname = 'roomify_db'; // 将 'user_db' 改为 'roomify_db'
+$dbname = 'user_db'; // 将 'user_db' 改为 'roomify_db'
 $username = 'root';
 $password = '';
 

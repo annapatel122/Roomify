@@ -5,7 +5,7 @@ class SettingsHandler {
     
     public function __construct() {
         $this->conn = new PDO(
-            "mysql:host=localhost;dbname=roomify_db",
+            "mysql:host=localhost;dbname=user_db",
             "root",
             ""
         );
