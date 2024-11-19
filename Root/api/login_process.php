@@ -36,16 +36,16 @@ try {
         if (password_verify($password, $user['password'])) {
             echo 'Password verified successfully';
             $_SESSION['username'] = $user['username'];
-            header("Location: login_success.html"); // 登录成功，跳转到成功页面
+            header("Location: /Roomify/Root/html-pages/login_success.html"); // 登录成功，跳转到成功页面
             exit();
         } else {
             echo 'Password verification failed'; // 密码验证失败
-            header("Location: login-page.html?error=1");
+            header("Location: /Roomify/Root/html-pages/login-page.html?error=1");
             exit();
         }
     } else {
         echo 'User not found'; // 未找到用户
-        header("Location: login-page.html?error=2");
+        header("Location: /Roomify/Root/html-pages/login-page.html?error=2");
         exit();
     }
 } catch (PDOException $e) {

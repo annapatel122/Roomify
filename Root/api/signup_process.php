@@ -52,7 +52,7 @@ try {
 
         if ($user_exists) {
             // User already exists, redirect to account_exists.html
-            header("Location: /Root/html-pages/account_exists.html");
+            header("Location: /Roomify/Root/html-pages/account_exists.html");
             exit();
         }
 
@@ -65,7 +65,7 @@ try {
         // Execute the statement
         if ($stmt->execute([$username, $email, $hashed_password])) {
             // User registered successfully, redirect to success page
-            header("Location: /Root/html-pages/signup_success.html");
+            header("Location: /Roomify/Root/html-pages/signup_success.html");
             exit();
         } else {
             throw new Exception("Error occurred while registering user.");
@@ -75,7 +75,7 @@ try {
     // Handle database errors
     if ($e->getCode() == '23000') {
         // Username or email already exists, redirect to account_exists.html
-        header("Location: /Root/html-pages/account_exists.html");
+        header("Location: /Roomify/Root/html-pages/account_exists.html");
         exit();
     } else {
         // Log the error for later review

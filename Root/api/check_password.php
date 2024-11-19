@@ -31,16 +31,16 @@ try {
         if (password_verify($password, $user['password'])) {
            
             $_SESSION['username'] = $user['username'];
-            header('Location: login_success.html?username=' . urlencode($username));
+            header('Location: /Roomify/Root/html-pages/login_success.html?username=' . urlencode($username));
             exit();
         } else {
           
-            header('Location: login-page.html?error=1');
+            header('Location: /Roomify/Root/html-pages/login-page.html?error=1');
             exit();
         }
     } else {
        
-        header('Location: login-page.html?error=2');
+        header('Location: /Roomify/Root/html-pages/login-page.html?error=2');
         exit();
     }
 } catch (PDOException $e) {
