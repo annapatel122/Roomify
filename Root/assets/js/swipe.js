@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Logout function
 function logout() {
     localStorage.removeItem('userData');
-    window.location.href = 'login-page.html';
+    window.location.href = '/Roomify/Root/html-pages/login-page.html';
 }
 
 // Save and apply settings

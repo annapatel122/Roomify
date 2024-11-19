@@ -192,7 +192,7 @@ function logout() {
         localStorage.removeItem('userSettings');
         
         
-        window.location.href = '/login-page.html';
+        window.location.href = '/Roomify/Root/html-pages/login-page.html';
     } catch (error) {
         console.error('Error during logout:', error);
         showNotification('Logout failed', 'error');
