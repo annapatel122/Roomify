@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roomify - Your Peaceful Space</title>
+    <title>Roomify - Profile</title>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.css">
     <link rel="stylesheet" href="../assets/css/style-dash.css">
     <link rel="stylesheet" href="../assets/css/background.css">
     <link rel="stylesheet" href="../assets/css/nav-bar.css">
+
+    <!-- JavaScript -->
+    <script src="../assets/js/theme.js" defer></script>
 </head>
 <body>
-    <!-- Previous navigation code remains the same -->
+    <!-- Navigation -->
     <nav class="top-nav">
         <div class="logonav">
             <h1><a href="../home-page.html">Roomify</a></h1>
@@ -20,11 +28,16 @@
             <a href="./matches.html">Matches</a>
             <a href="./messages.html">Messages</a>
             <a href="./settings.html">Settings</a>
+            <div id="online-indicator" class="online-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Online</span>
+            </div>
             <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
-            <a href="login-page.html" class="logout" onclick="logout()">Logout</a>
+            <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
         </div>
     </nav>
 
+    <!-- Main Profile Section -->
     <main class="main-container">
         <section class="profile-section">
             <div class="profile-picture">
@@ -45,8 +58,8 @@
         </section>
 
         <div class="find-roommate">
-    <a href="./swipe-interface.html" class="find-roommate-button">Go Find Your Roommate!</a>
-</div>
+            <a href="./swipe-interface.html" class="find-roommate-button">Go Find Your Roommate!</a>
+        </div>
     </main>
 
     <!-- Edit Profile Modal -->
@@ -99,6 +112,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
         <a href="./about.html">About Us</a> | 
@@ -106,28 +120,28 @@
         <a href="./contact.html">Contact Us</a>
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
-            <!-- CHange link from twitter png to bluesky -->
             <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
             <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
         </div>
     </footer>
 
     <script>
-        // Load user data from localStorage on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadUserData();
+            initializeOnlineStatus();
         });
+
+        function initializeOnlineStatus() {
+            const onlineIndicator = document.getElementById('online-indicator');
+            onlineIndicator.classList.add(navigator.onLine ? 'online' : 'offline');
+        }
 
         function loadUserData() {
             const userData = JSON.parse(localStorage.getItem('userData')) || {};
-            
-            // Update display fields
-            if (userData.name) {
-                document.getElementById('nav-username').textContent = userData.name.split(' ')[0];
-                document.getElementById('user-fullname').textContent = `${userData.name}, ${userData.age || ''}`;
-                document.getElementById('user-fullname').classList.remove('empty-field');
-            }
-            
+            const profilePic = localStorage.getItem('profilePicture');
+
+            document.getElementById('nav-username').textContent = userData.name?.split(' ')[0] || 'Click to add name';
+            document.getElementById('user-fullname').textContent = userData.name ? `${userData.name}, ${userData.age || ''}` : "Click 'Edit Profile' to add your information";
             updateField('occupation', userData.occupation);
             updateField('location', userData.location);
             updateField('gender', userData.gender);
@@ -135,26 +149,32 @@
             updateField('budget', userData.budget);
             updateField('bio', userData.bio);
 
-            // Update form fields
-            document.getElementById('name').value = userData.name || '';
-            document.getElementById('age').value = userData.age || '';
-            document.getElementById('occupation').value = userData.occupation || '';
-            document.getElementById('location').value = userData.location || '';
-            document.getElementById('gender').value = userData.gender || '';
-            document.getElementById('moveInDate').value = userData.moveInDate || '';
-            document.getElementById('budget').value = userData.budget || '';
-            document.getElementById('bio').value = userData.bio || '';
+            if (profilePic) {
+                document.getElementById('profile-pic').src = profilePic;
+            }
         }
 
         function updateField(id, value) {
             const element = document.getElementById(`user-${id}`);
-            if (value) {
-                element.textContent = value;
-                element.classList.remove('empty-field');
-            } else {
-                element.classList.add('empty-field');
-            }
+            element.textContent = value || 'Unknown';
+            element.classList.toggle('empty-field', !value);
         }
+
+        function handlePhotoUpload() {
+            document.getElementById('photo-upload').click();
+        }
+
+        document.getElementById('photo-upload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-pic').src = e.target.result;
+                    localStorage.setItem('profilePicture', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
         function openEditModal() {
             document.getElementById('editModal').style.display = 'flex';
@@ -166,7 +186,6 @@
 
         function saveProfile(event) {
             event.preventDefault();
-            
             const userData = {
                 name: document.getElementById('name').value,
                 age: document.getElementById('age').value,
@@ -175,45 +194,18 @@
                 gender: document.getElementById('gender').value,
                 moveInDate: document.getElementById('moveInDate').value,
                 budget: document.getElementById('budget').value,
-                bio: document.getElementById('bio').value
+                bio: document.getElementById('bio').value,
             };
-
-            // Save to localStorage
             localStorage.setItem('userData', JSON.stringify(userData));
-            
-            // Update display
             loadUserData();
-            
-            // Close modal
             closeEditModal();
         }
 
-        function handlePhotoUpload() {
-            document.getElementById('photo-upload').click();
-        }
-
-        // Add photo upload handler
-        document.getElementById('photo-upload').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profile-pic').src = e.target.result;
-                    // You might want to save this to localStorage or your backend
-                    localStorage.setItem('profilePicture', e.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
         function logout() {
-            // Clear user data
             localStorage.removeItem('userData');
             localStorage.removeItem('profilePicture');
-            // Redirect to login page
-            window.location.href = '/Root/html-pages/login-page.html';
+            window.location.href = './login-page.html';
         }
     </script>
 </body>
 </html>
-    

@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - Roomify</title>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/settings.css">
     <link rel="stylesheet" href="../assets/css/style-edit.css">
     <link rel="stylesheet" href="../assets/css/background.css">
     <link rel="stylesheet" href="../assets/css/nav-bar.css">
+
+    <!-- JavaScript -->
+    <script src="../assets/js/theme.js" defer></script>
 </head>
 <body>
     <nav class="top-nav">
@@ -93,7 +102,6 @@
         <a href="./contact.html">Contact Us</a>
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
-            <!-- CHange link from twitter png to bluesky -->
             <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
             <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
         </div>
@@ -148,7 +156,7 @@
             localStorage.setItem('userData', JSON.stringify(userData));
             
             // Redirect to dashboard
-            window.location.href = '/Root/html-pages/profile-dash.html';
+            window.location.href = './profile-dash.html';
         }
 
         // Handle photo upload
@@ -167,7 +175,7 @@
         function logout() {
             localStorage.removeItem('userData');
             localStorage.removeItem('profilePicture');
-            window.location.href = '/Root/html-pages/login-page.html';
+            window.location.href = './login-page.html';
         }
     </script>
 </body>

@@ -1,4 +1,3 @@
-// Sample profiles data (Replace this with actual data from your database)
 let currentProfileIndex = 0;
 const profiles = [
     {
@@ -186,7 +185,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Logout function
 function logout() {
     localStorage.removeItem('userData');
     window.location.href = 'login-page.html';
 }
+
+// Save and apply settings
+function saveSettings() {
+    const settings = {
+        theme: document.getElementById('theme-preference').value
+    };
+
+    localStorage.setItem('userSettings', JSON.stringify(settings));
+    applyTheme(settings.theme);
+}
+
+function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+}
+
+window.addEventListener('storage', function(e) {
+    if (e.key === 'userSettings') {
+        const settings = JSON.parse(e.newValue);
+        applyTheme(settings.theme);
+    }
+});
