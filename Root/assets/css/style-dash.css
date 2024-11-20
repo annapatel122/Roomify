@@ -236,7 +236,7 @@
         .edit-modal {
             display: none;
             position: fixed;
-            top: 20%; /* Adjust this value to move the modal lower */
+            top: 5%; /* Adjust this value to move the modal lower */
             left: 0;
             width: 100%;
             height: 100%;
