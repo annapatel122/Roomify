@@ -1,4 +1,5 @@
 let currentProfileIndex = 0;
+
 const profiles = [
     {
         name: "Alex Johnson",
@@ -16,68 +17,7 @@ const profiles = [
         bio: "Artist at heart.",
         image: "images/profile2.jpg"
     },
-    {
-        name: "David Lee",
-        age: 30,
-        occupation: "Marketing Manager",
-        location: "Chicago",
-        bio: "Enjoys hiking and photography.",
-        image: "images/profile3.jpg"
-    },
-    {
-        name: "Samantha Brown",
-        age: 27,
-        occupation: "Teacher",
-        location: "Austin",
-        bio: "Book lover and coffee enthusiast.",
-        image: "images/profile4.jpg"
-    },
-    {
-        name: "Michael Chen",
-        age: 26,
-        occupation: "Accountant",
-        location: "San Francisco",
-        bio: "Foodie who loves exploring new restaurants.",
-        image: "images/profile5.jpg"
-    },
-    {
-        name: "Emily Davis",
-        age: 24,
-        occupation: "Nurse",
-        location: "Seattle",
-        bio: "Passionate about health and wellness.",
-        image: "images/profile6.jpg"
-    },
-    {
-        name: "James Wilson",
-        age: 29,
-        occupation: "Lawyer",
-        location: "Boston",
-        bio: "Avid runner and traveler.",
-        image: "images/profile7.jpg"
-    },
-    {
-        name: "Olivia Martinez",
-        age: 23,
-        occupation: "Student",
-        location: "Miami",
-        bio: "Studying psychology, loves beach days.",
-        image: "images/profile8.jpg"
-    },
-    {
-        name: "Sarah Johnson",
-        age: 24,
-        occupation: "Software Engineer",
-        location: "San Francisco, CA",
-        bio: "Looking for a clean, quiet apartment. I enjoy cooking and watching movies. Early riser and very organized!"
-    },
-    {
-        name: "Michael Chen",
-        age: 27,
-        occupation: "UX Designer",
-        location: "San Francisco, CA",
-        bio: "Creative professional seeking roommate with similar interests. Love art, music, and good conversation."
-    }
+    // Additional profiles...
 ];
 
 const cardElement = document.getElementById('profile-card');
@@ -109,21 +49,38 @@ function updateProfile(index) {
 
 // Arrow buttons
 document.getElementById('left-arrow').addEventListener('click', () => {
+    swipeLeft();
+});
+
+document.getElementById('right-arrow').addEventListener('click', () => {
+    swipeRight();
+});
+
+function swipeLeft() {
     container.classList.add('nope');
     setTimeout(() => {
         currentProfileIndex = (currentProfileIndex - 1 + profiles.length) % profiles.length;
         updateProfile(currentProfileIndex);
         container.classList.remove('nope');
     }, 300);
-});
+}
 
-document.getElementById('right-arrow').addEventListener('click', () => {
+function swipeRight() {
     container.classList.add('like');
     setTimeout(() => {
         currentProfileIndex = (currentProfileIndex + 1) % profiles.length;
         updateProfile(currentProfileIndex);
         container.classList.remove('like');
     }, 300);
+}
+
+// Keyboard controls for swiping
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') {
+        swipeLeft();
+    } else if (event.key === 'ArrowRight') {
+        swipeRight();
+    }
 });
 
 // Touch and mouse events for card swiping
@@ -143,7 +100,7 @@ function startDragging(event) {
 
 function drag(event) {
     if (!isDragging) return;
-    
+
     const x = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX;
     const deltaX = x - startX;
     currentX = x;
@@ -160,16 +117,16 @@ function drag(event) {
 
 function stopDragging() {
     if (!isDragging) return;
-    
+
     isDragging = false;
     const deltaX = currentX - startX;
     cardElement.style.transition = 'transform 0.3s ease';
-    
+
     if (Math.abs(deltaX) > 100) {
         if (deltaX > 0) {
-            document.getElementById('right-arrow').click();
+            swipeRight();
         } else {
-            document.getElementById('left-arrow').click();
+            swipeLeft();
         }
     } else {
         cardElement.style.transform = 'translateX(0) rotate(0)';
@@ -177,37 +134,9 @@ function stopDragging() {
     }
 }
 
-// Load user name from localStorage
-document.addEventListener('DOMContentLoaded', function() {
-    const userData = JSON.parse(localStorage.getItem('userData')) || {};
-    if (userData.name) {
-        document.getElementById('nav-username').textContent = userData.name.split(' ')[0];
-    }
-});
 
 // Logout function
 function logout() {
     localStorage.removeItem('userData');
     window.location.href = '/Roomify/Root/html-pages/login-page.html';
 }
-
-// Save and apply settings
-function saveSettings() {
-    const settings = {
-        theme: document.getElementById('theme-preference').value
-    };
-
-    localStorage.setItem('userSettings', JSON.stringify(settings));
-    applyTheme(settings.theme);
-}
-
-function applyTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
-}
-
-window.addEventListener('storage', function(e) {
-    if (e.key === 'userSettings') {
-        const settings = JSON.parse(e.newValue);
-        applyTheme(settings.theme);
-    }
-});
