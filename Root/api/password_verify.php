@@ -5,6 +5,7 @@ $password = $_POST['password'];
 
 // 创建数据库连接
 $servername = "localhost";
+$port = 3306;
 $dbname = "user_db";
 $db_username = "your_db_username"; // 数据库用户名
 $db_password = "your_db_password"; // 数据库密码

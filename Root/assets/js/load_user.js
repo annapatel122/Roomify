@@ -1,6 +1,6 @@
 async function loadUsername() {
     try {
-        const response = await fetch('/path/to/get_username.php'); // Update path as needed
+        const response = await fetch('/Roomify/Root/api/get_username.php'); // Update path as needed
         const text = await response.text(); // Read raw response for debugging
         console.log('Raw response:', text); // Log raw response
 

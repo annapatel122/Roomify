@@ -9,9 +9,10 @@ error_reporting(0);
 ini_set('display_errors', 0);
 // Database connection
 $servername = "localhost";
+$port = 3306;
 $dbname = "user_db";
-$db_username = "your_db_username"; 
-$db_password = "your_db_password"; 
+$db_username = 'root';
+$db_password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
