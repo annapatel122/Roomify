@@ -15,13 +15,18 @@
 <body>
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="/">Roomify</a></h1>
+            <h1><a href="./profile-dash.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="#"> | </a>
             <a href="./matches.html">Matches</a>
-            <a href="./profile-dash.html">Back To Dash</a>
+            <a href="./messages.html">Messages</a>
             <a href="./settings.html">Settings</a>
+            <a href="#"> | </a>
+            <div id="online-indicator" class="online-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Online</span>
+            </div>
             <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
             <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
         </div>

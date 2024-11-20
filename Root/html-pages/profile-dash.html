@@ -21,13 +21,14 @@
     <!-- Navigation -->
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="../home-page.html">Roomify</a></h1>
+            <h1><a href="./profile-dash.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
-            <a href="./edit-profile.html">Edit Profile</a>
+            <a href="#"> | </a>
             <a href="./matches.html">Matches</a>
             <a href="./messages.html">Messages</a>
             <a href="./settings.html">Settings</a>
+            <a href="#"> | </a>
             <div id="online-indicator" class="online-indicator">
                 <span class="status-dot"></span>
                 <span class="status-text">Online</span>
@@ -126,91 +127,127 @@
     </footer>
 
     <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
+            // Event listeners for DOM content loaded and keyboard events
+            document.addEventListener('DOMContentLoaded', function() {
+                loadUserData();
+                initializeOnlineStatus();
+            });
+        
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeEditModal();
+                }
+            });
+        
+            // Initialize online status indicator
+            function initializeOnlineStatus() {
+                const onlineIndicator = document.getElementById('online-indicator');
+                onlineIndicator.classList.add(navigator.onLine ? 'online' : 'offline');
+            }
+        
+            // Load user data from localStorage
+            function loadUserData() {
+                const userData = JSON.parse(localStorage.getItem('userData')) || {};
+                const profilePic = localStorage.getItem('profilePicture');
+        
+                // Update navigation username
+                document.getElementById('nav-username').textContent = userData.name?.split(' ')[0] || 'Click to add name';
+        
+                // Update profile fields
+                document.getElementById('user-fullname').textContent = userData.name ? `${userData.name}, ${userData.age || ''}` : "Click 'Edit Profile' to add your information";
+                updateField('occupation', userData.occupation);
+                updateField('location', userData.location);
+                updateField('gender', userData.gender);
+                updateField('movein-date', userData.moveInDate);
+                updateField('budget', userData.budget);
+                updateField('bio', userData.bio);
+        
+                // Update form fields
+                document.getElementById('name').value = userData.name || '';
+                document.getElementById('age').value = userData.age || '';
+                document.getElementById('occupation').value = userData.occupation || '';
+                document.getElementById('location').value = userData.location || '';
+                document.getElementById('gender').value = userData.gender || '';
+                document.getElementById('moveInDate').value = userData.moveInDate || '';
+                document.getElementById('budget').value = userData.budget || '';
+                document.getElementById('bio').value = userData.bio || '';
+        
+                // Update profile picture if exists
+                if (profilePic) {
+                    document.getElementById('profile-pic').src = profilePic;
+                }
+            }
+        
+            // Update a field in the profile section
+            function updateField(id, value) {
+                const element = document.getElementById(`user-${id}`);
+                if (element) {
+                    element.textContent = value || 'Unknown';
+                    element.classList.toggle('empty-field', !value);
+                }
+            }
+        
+            // Open and close the edit profile modal
+            function openEditModal() {
+                document.getElementById('editModal').style.display = 'flex';
+            }
+        
+            function closeEditModal() {
+                document.getElementById('editModal').style.display = 'none';
+            }
+        
+            // Save changes to user data
+            function saveProfile(event) {
+                event.preventDefault();
+        
+                const userData = {
+                    name: document.getElementById('name').value,
+                    age: document.getElementById('age').value,
+                    occupation: document.getElementById('occupation').value,
+                    location: document.getElementById('location').value,
+                    gender: document.getElementById('gender').value,
+                    moveInDate: document.getElementById('moveInDate').value,
+                    budget: document.getElementById('budget').value,
+                    bio: document.getElementById('bio').value,
+                };
+        
+                // Save to localStorage
+                localStorage.setItem('userData', JSON.stringify(userData));
+        
+                // Reload profile data and close modal
+                loadUserData();
                 closeEditModal();
             }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            loadUserData();
-            initializeOnlineStatus();
-        });
-
-        function initializeOnlineStatus() {
-            const onlineIndicator = document.getElementById('online-indicator');
-            onlineIndicator.classList.add(navigator.onLine ? 'online' : 'offline');
-        }
-
-        function loadUserData() {
-            const userData = JSON.parse(localStorage.getItem('userData')) || {};
-            const profilePic = localStorage.getItem('profilePicture');
-
-            document.getElementById('nav-username').textContent = userData.name?.split(' ')[0] || 'Click to add name';
-            document.getElementById('user-fullname').textContent = userData.name ? `${userData.name}, ${userData.age || ''}` : "Click 'Edit Profile' to add your information";
-            updateField('occupation', userData.occupation);
-            updateField('location', userData.location);
-            updateField('gender', userData.gender);
-            updateField('movein-date', userData.moveInDate);
-            updateField('budget', userData.budget);
-            updateField('bio', userData.bio);
-
-            if (profilePic) {
-                document.getElementById('profile-pic').src = profilePic;
+        
+            // Redirect to dashboard after saving changes
+            function saveChanges(event) {
+                saveProfile(event);
+                window.location.href = '/Roomify/Root/html-pages/profile-dash.html';
             }
-        }
-
-        function updateField(id, value) {
-            const element = document.getElementById(`user-${id}`);
-            element.textContent = value || 'Unknown';
-            element.classList.toggle('empty-field', !value);
-        }
-
-        function handlePhotoUpload() {
-            document.getElementById('photo-upload').click();
-        }
-
-        document.getElementById('photo-upload').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profile-pic').src = e.target.result;
-                    localStorage.setItem('profilePicture', e.target.result);
-                };
-                reader.readAsDataURL(file);
+        
+            // Handle photo upload functionality
+            function handlePhotoUpload() {
+                document.getElementById('photo-upload').click();
             }
-        });
-
-        function openEditModal() {
-            document.getElementById('editModal').style.display = 'flex';
-        }
-
-        function closeEditModal() {
-            document.getElementById('editModal').style.display = 'none';
-        }
-
-        function saveProfile(event) {
-            event.preventDefault();
-            const userData = {
-                name: document.getElementById('name').value,
-                age: document.getElementById('age').value,
-                occupation: document.getElementById('occupation').value,
-                location: document.getElementById('location').value,
-                gender: document.getElementById('gender').value,
-                moveInDate: document.getElementById('moveInDate').value,
-                budget: document.getElementById('budget').value,
-                bio: document.getElementById('bio').value,
-            };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            loadUserData();
-            closeEditModal();
-        }
-
-        function logout() {
-            localStorage.removeItem('userData');
-            localStorage.removeItem('profilePicture');
-            window.location.href = '/Roomify/Root/html-pages/login-page.html';
-        }
+        
+            document.getElementById('photo-upload').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profile-pic').src = e.target.result;
+                        localStorage.setItem('profilePicture', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        
+            // Logout functionality
+            function logout() {
+                localStorage.removeItem('userData');
+                localStorage.removeItem('profilePicture');
+                window.location.href = '/Roomify/Root/html-pages/login-page.html';
+            }        
     </script>
 </body>
 </html>
