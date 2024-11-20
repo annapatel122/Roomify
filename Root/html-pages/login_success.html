@@ -23,30 +23,27 @@
         </div>
     </div>
     <script>
-        // 存储当前登录用户信息
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get('username');
-        if (username) {
-            localStorage.setItem('username', username);
-            sessionStorage.setItem('username', username);
-            console.log('Username stored:', username);
-        }
+    // Store the logged-in user's username
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    if (username) {
+        localStorage.setItem('username', username);
+        sessionStorage.setItem('username', username);
+        console.log('Username stored:', username);
+    }
 
-        // 修改导航函数使用正确的路径
-        function navigateToDashboard(event) {
-            event.preventDefault();
-            
-            const storedUsername = localStorage.getItem('username') || sessionStorage.getItem('username');
-            console.log('Attempting to navigate with username:', storedUsername);
-            
-            if (storedUsername) {
-                // 使用正确的服务器路径
-                window.location.href = '/Roomify/Root/html-pages/profile-dash.html';
-            } else {
-                console.log('No username found, redirecting to login...');
-                window.location.href = '/Roomify/Root/html-pages/login-page.html';
-            }
+    function navigateToDashboard(event) {
+        event.preventDefault();
+        const storedUsername = localStorage.getItem('username') || sessionStorage.getItem('username');
+        console.log('Attempting to navigate with username:', storedUsername);
+
+        if (storedUsername) {
+            window.location.href = '/Roomify/Root/html-pages/profile-dash.html';
+        } else {
+            console.log('No username found, redirecting to login...');
+            window.location.href = '/Roomify/Root/html-pages/login-page.html';
         }
+    }
 
         // 添加错误处理和调试信息
         window.onerror = function(msg, url, line) {
@@ -55,6 +52,7 @@
             console.log('Line: ' + line);
             return false;
         };
+        
     </script>
 </body>
 </html>

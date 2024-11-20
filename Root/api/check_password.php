@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$_SESSION['user_id'] = $user['id'];
 
 $host = 'localhost';
 $port = 3306;

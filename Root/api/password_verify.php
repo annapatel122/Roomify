@@ -7,8 +7,8 @@ $password = $_POST['password'];
 $servername = "localhost";
 $port = 3306;
 $dbname = "user_db";
-$db_username = "your_db_username"; // 数据库用户名
-$db_password = "your_db_password"; // 数据库密码
+$db_username = "root"; // 数据库用户名
+$db_password = ""; // 数据库密码
 
 // 连接到数据库
 $conn = new mysqli($servername, $db_username, $db_password, $dbname);
