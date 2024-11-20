@@ -233,7 +233,7 @@
                 margin-top: 20px;
             }
         }
-		.edit-modal {
+        .edit-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -244,6 +244,7 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow: auto;
         }
 
         .modal-content {
