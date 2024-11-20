@@ -8,6 +8,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     position: relative;
     z-index: 1;
+    display: flexbox;
 }
 
 .settings-section {
@@ -54,38 +55,4 @@ h2 {
 
 .save-button:hover {
     background: #8bc6a9;
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin-right: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.status-text {
-    font-size: 14px;
-    color: #a8d5ba;
-    font-weight: 500;
-}
-
-
-.online .status-dot {
-    background-color: #4CAF50;
-    box-shadow: 0 0 4px #4CAF50;
-}
-
-.online .status-text {
-    color: #a8d5ba;
-}
-
-
-.offline .status-dot {
-    background-color: #e0e0e0;
-    box-shadow: 0 0 4px #e0e0e0;
-}
-
-.offline .status-text {
-    color: #e0e0e0;
 }
