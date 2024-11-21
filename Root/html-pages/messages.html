@@ -8,7 +8,7 @@
     <!-- CSS -->
 <link rel="stylesheet" href="../assets/css/theme.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style-dash.css">
+    <link rel="stylesheet" href="../assets/css/messages.css">
     <link rel="stylesheet" href="../assets/css/nav-bar.css">
     <link rel="stylesheet" href="../assets/css/background.css">
 
@@ -37,17 +37,20 @@
     <main class="main-container">
         <h2>Messages</h2>
         <div class="messages-section">
-            <!-- Placeholder for messages between user and matches -->
             <div class="message-thread">
                 <h3>Conversation with User Name</h3>
-                <div class="message">
-                    <p><strong>User Name:</strong> Hi! How's it going?</p>
+                <div class="chat-box">
+                    <div class="message received">
+                        <p><strong>User Name:</strong> Hi! How's it going?</p>
+                    </div>
+                    <div class="message sent">
+                        <p><strong>You:</strong> I'm good! How about you?</p>
+                    </div>
                 </div>
-                <div class="message">
-                    <p><strong>You:</strong> I'm good! How about you?</p>
+                <div class="message-input-container">
+                    <input type="text" class="message-input" placeholder="Type your message...">
+                    <button class="send-message-button">Send</button>
                 </div>
-                <input type="text" class="message-input" placeholder="Type your message...">
-                <button class="send-message-button">Send</button>
             </div>
         </div>
     </main>
