@@ -1,29 +1,69 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef5f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
+/* Main Container */
+.main-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Settings Container */
 .settings-container {
     max-width: 800px;
     margin: 40px auto;
     padding: 30px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 1;
-    display: flexbox;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .settings-section {
     margin-bottom: 30px;
 }
 
-h2 {
-    color: #2b2b2b;
-    margin-bottom: 20px;
+.settings-category {
+    margin-bottom: 30px;
 }
 
-.settings-group {
+h2, h3 {
+    color: #2b2b2b;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Form Group */
+.form-group {
     margin: 15px 0;
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2b2b2b;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Checkboxes */
 .settings-checkbox {
     display: flex;
     align-items: center;
@@ -34,14 +74,16 @@ h2 {
     margin-right: 10px;
 }
 
+/* Theme Select */
 .theme-select {
-    width: 200px;
-    padding: 8px;
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
     margin-top: 10px;
 }
 
+/* Save Buttons */
 .save-button {
     background: #a8d5ba;
     color: #2b2b2b;
@@ -51,8 +93,20 @@ h2 {
     cursor: pointer;
     margin-top: 20px;
     font-weight: 600;
+    transition: background 0.3s ease;
 }
 
 .save-button:hover {
     background: #8bc6a9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 20px;
+    }
+
+    .theme-select {
+        width: 100%;
+    }
 }

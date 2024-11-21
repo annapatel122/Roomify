@@ -39,78 +39,81 @@
 
     <main class="main-container">
         <h2>Settings</h2>
-        <section class="settings-section">
-            <!-- Account Settings -->
-            <div class="settings-category">
-                <h3>Account Settings</h3>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+        <div class="settings-container">
+            <section class="settings-section">
+                <!-- Account Settings -->
+                <div class="settings-category">
+                    <h3>Account Settings</h3>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Enter new password">
+                    </div>
+                    <button class="save-button">Save Changes</button>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter new password">
+    
+                <!-- Notification Settings -->
+                <div class="settings-category">
+                    <h3>Notification Settings</h3>
+                    <div class="settings-checkbox">
+                        <input type="checkbox" id="email-notifications">
+                        <label for="email-notifications">Email Notifications</label>
+                    </div>
+                    <div class="settings-checkbox">
+                        <input type="checkbox" id="sms-notifications">
+                        <label for="sms-notifications">SMS Notifications</label>
+                    </div>
+                    <button class="save-button">Update Notifications</button>
                 </div>
-                <button class="save-button">Save Changes</button>
-            </div>
-
-            <!-- Notification Settings -->
-            <div class="settings-category">
-                <h3>Notification Settings</h3>
-                <div class="form-group">
-                    <input type="checkbox" id="email-notifications">
-                    <label for="email-notifications">Email Notifications</label>
+    
+                <!-- Privacy Settings -->
+                <div class="settings-category">
+                    <h3>Privacy Settings</h3>
+                    <div class="settings-checkbox">
+                        <input type="checkbox" id="public-profile">
+                        <label for="public-profile">Make Profile Public</label>
+                    </div>
+                    <div class="settings-checkbox">
+                        <input type="checkbox" id="share-activity">
+                        <label for="share-activity">Share Activity with Matches</label>
+                    </div>
+                    <button class="save-button">Save Privacy Preferences</button>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="sms-notifications">
-                    <label for="sms-notifications">SMS Notifications</label>
+    
+                <!-- Theme Preference -->
+                <div class="settings-category">
+                    <h3>Theme Preference</h3>
+                    <div class="form-group">
+                        <label for="theme-preference">Theme:</label>
+                        <select id="theme-preference" class="theme-select" onchange="toggleDarkMode()">
+                            <option value="light">Light Mode</option>
+                            <option value="dark">Dark Mode</option>
+                        </select>
+                    </div>
+                    <button class="save-button">Apply Theme</button>
                 </div>
-                <button class="save-button">Update Notifications</button>
-            </div>
-
-            <!-- Privacy Settings -->
-            <div class="settings-category">
-                <h3>Privacy Settings</h3>
-                <div class="form-group">
-                    <input type="checkbox" id="public-profile">
-                    <label for="public-profile">Make Profile Public</label>
+    
+                <!-- Language Preference -->
+                <div class="settings-category">
+                    <h3>Language Settings</h3>
+                    <div class="form-group">
+                        <label for="language">Language:</label>
+                        <select id="language" class="theme-select">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <!-- Add more languages as needed -->
+                        </select>
+                    </div>
+                    <button class="save-button">Save Preferences</button>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="share-activity">
-                    <label for="share-activity">Share Activity with Matches</label>
-                </div>
-                <button class="save-button">Save Privacy Preferences</button>
-            </div>
-
-            <!-- Theme Preference -->
-            <div class="settings-category">
-                <h3>Theme Preference</h3>
-                <div class="form-group">
-                    <label for="theme-preference">Theme:</label>
-                    <select id="theme-preference" onchange="toggleDarkMode()">
-                        <option value="light">Light Mode</option>
-                        <option value="dark">Dark Mode</option>
-                    </select>
-                </div>
-                <button class="save-button">Apply Theme</button>
-            </div>
-
-            <!-- Language Preference -->
-            <div class="settings-category">
-                <h3>Language Settings</h3>
-                <div class="form-group">
-                    <label for="language">Language:</label>
-                    <select id="language">
-                        <option value="en">English</option>
-                        <option value="es">Spanish</option>
-                        <option value="fr">French</option>
-                        <!-- Add more languages as needed -->
-                    </select>
-                </div>
-                <button class="save-button">Save Preferences</button>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
+    
 
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>

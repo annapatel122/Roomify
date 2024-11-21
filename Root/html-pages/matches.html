@@ -8,6 +8,7 @@
     <!-- CSS -->
 <link rel="stylesheet" href="../assets/css/theme.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/matches.css">
     <link rel="stylesheet" href="../assets/css/style-dash.css">
     <link rel="stylesheet" href="../assets/css/nav-bar.css">
     <link rel="stylesheet" href="../assets/css/background.css">
@@ -36,21 +37,59 @@
 
     <main class="main-container">
         <h2>Your Matches</h2>
-        <div class="matches-section">
-            <!-- Placeholder for matched user cards -->
+        <div class="matches-wrapper">
+            <button class="swipe-button" id="prev-match">&lt;</button>
+            <div class="matches-section">
+                <!-- Match Card 1 -->
+                <div class="match-card">
+                    <img src="../assets/images/default-profile.png" alt="Match Profile Picture">
+                    <div class="match-info">
+                        <h3>User Name</h3>
+                        <p><span class="field-title">Location:</span> City</p>
+                        <p><span class="field-title">Shared Interests:</span> Cooking, Hiking</p>
+                        <p><span class="field-title">Bio:</span> A brief description about the user.</p>
+                        <a href="./messages.html" class="message-button">Message</a>
+                    </div>
+                </div>
+                <!-- Match Card 2 -->
+                <div class="match-card">
+                    <img src="../assets/images/default-profile.png" alt="Match Profile Picture">
+                    <div class="match-info">
+                        <h3>Jane Doe</h3>
+                        <p><span class="field-title">Location:</span> Springfield</p>
+                        <p><span class="field-title">Shared Interests:</span> Reading, Traveling</p>
+                        <p><span class="field-title">Bio:</span> A brief description about the user.</p>
+                        <a href="./messages.html" class="message-button">Message</a>
+                    </div>
+            </div>
             <div class="match-card">
                 <img src="../assets/images/default-profile.png" alt="Match Profile Picture">
                 <div class="match-info">
-                    <h3>User Name</h3>
-                    <p>Location: City</p>
-                    <p>Shared Interests: Cooking, Hiking</p>
+                    <h3>John Doe</h3>
+                    <p><span class="field-title">Location:</span> Clarksville</p>
+                    <p><span class="field-title">Shared Interests:</span> Reading, Painting</p>
+                    <p><span class="field-title">Bio:</span> A brief description about the user.</p>
                     <a href="./messages.html" class="message-button">Message</a>
                 </div>
-            </div>
-            <!-- Additional match cards can be added dynamically -->
+            <button class="swipe-button" id="next-match">&gt;</button>
         </div>
     </main>
-
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const matchesSection = document.querySelector(".matches-section");
+        const prevButton = document.getElementById("prev-match");
+        const nextButton = document.getElementById("next-match");
+    
+        prevButton.addEventListener("click", () => {
+            alert("Swiping to previous match (future implementation)");
+        });
+    
+        nextButton.addEventListener("click", () => {
+            alert("Swiping to next match (future implementation)");
+        });
+    });
+    
+</script>
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
         <a href="./about.html">About Us</a> | 

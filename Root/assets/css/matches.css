@@ -1,0 +1,179 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef5f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.top-nav {
+    background-color: #2b2b2b;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.top-nav a.active {
+    color: #a8d5ba;
+}
+
+.online-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #a8d5ba;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Main Container */
+.main-container {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #2b2b2b;
+    margin-bottom: 30px;
+}
+
+/* Matches Wrapper */
+.matches-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-top: 50px;
+}
+
+/* Matches Section */
+.matches-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Match Card */
+.match-card {
+    background: white;
+    border: 2px solid #2b2b2b; /* Matches header/footer color */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    height: 400px; /* Taller card */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.match-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 3px solid #8bc6a9;
+}
+
+.match-info {
+    text-align: left; /* Align to left for better readability */
+    color: #333;
+    width: 100%;
+}
+
+.match-info h3 {
+    margin: 10px 0;
+    color: #2b2b2b;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #a8d5ba; /* Adds a separator for contrast */
+    padding-bottom: 5px;
+}
+
+.match-info p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.match-info .field-title {
+    font-weight: bold;
+    color: #2b2b2b;
+    margin-right: 5px;
+}
+
+/* Message Button */
+.message-button {
+    background-color: #2b2b2b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative; /* Allow positioning */
+    top: 50px; /* Shift 50px down */
+    transition: background-color 0.3s ease;
+}
+
+.message-button:hover {
+    background-color: #555555;
+} 
+
+/* Swipe Buttons */
+.swipe-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #2b2b2b;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swipe-button:hover {
+    background-color: #555555;
+}
+
+/* Positioning Arrows */
+#prev-match {
+    left: -200px; /* Shift 200px further to the left */
+}
+
+#next-match {
+    right: -200px; /* Shift 200px further to the right */
+}
+
