@@ -1,0 +1,297 @@
+<?php
+// profile-dash.php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in; redirect to login page
+    header('Location: /Roomify/Root/html-pages/login-page.html');
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+// Proceed to display the profile dashboard
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roomify - Profile</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/style-dash.css">
+    <link rel="stylesheet" href="../assets/css/background.css">
+    <link rel="stylesheet" href="../assets/css/nav-bar.css">
+
+    <!-- JavaScript -->
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/load_user.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="logonav">
+            <h1><a href="./profile-dash.html">Roomify</a></h1>
+        </div>
+        <div class="nav-items">
+            <a href="#"> | </a>
+            <a href="./matches.php">Matches</a>
+            <a href="./messages.php">Messages</a>
+            <a href="./settings.php">Settings</a>
+            <a href="#"> | </a>
+            <div id="online-indicator" class="online-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Online</span>
+            </div>
+            <span class="username">Hello, <span id="nav-username">Click to add name</span></span>
+            <a href="./login-page.html" class="logout" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Profile Section -->
+    <main class="main-container">
+        <section class="profile-section">
+            <div class="profile-picture">
+                <img src="../assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
+                <button class="edit-photo-button" onclick="handlePhotoUpload()">Edit Photo</button>
+                <input type="file" id="photo-upload" class="hidden" accept="image/*" title="Upload Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h2 id="user-fullname"><span class="empty-field">Click 'Edit Profile' to add your information</span></h2>
+                <p><strong>Occupation:</strong> <span id="user-occupation" class="empty-field">Occupation</span></p>
+                <p><strong>Location:</strong> <span id="user-location" class="empty-field">Location</span></p>
+                <p><strong>Gender:</strong> <span id="user-gender" class="empty-field">Gender</span></p>
+                <p><strong>Move-in Date:</strong> <span id="user-movein-date" class="empty-field">Move-in Date</span></p>
+                <p><strong>Budget:</strong> $<span id="user-budget" class="empty-field">Budget</span></p>
+                <p><strong>About Me:</strong> <span id="user-bio" class="empty-field">Tell us about yourself...</span></p>
+                <button class="edit-profile-button" onclick="openEditModal()">Edit Profile</button>
+            </div>
+        </section>
+
+        <div class="find-roommate">
+            <a href="./swipe-interface.php" class="find-roommate-button">Go Find Your Roommate!</a>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="editModal" class="edit-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditModal()">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="profileForm" onsubmit="saveProfile(event)">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" min="18" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Non-binary">Non-binary</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="moveInDate">Move-in Date:</label>
+                    <input type="date" id="moveInDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget ($):</label>
+                    <input type="number" id="budget" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="bio">About Me:</label>
+                    <textarea id="bio" required></textarea>
+                </div>
+                <button type="submit" class="save-button">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Roomify. All rights reserved.</p>
+        <a href="./about.php">About Us</a> | 
+        <a href="./privacy.php">Privacy Policy</a> | 
+        <a href="./contact.php">Contact Us</a>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
+            <a href="https://bsky.app/"><img src="../assets/images/twitter-icon.png" alt="Bluesky"></a>
+            <a href="https://www.instagram.com/"><img src="../assets/images/instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+            // Event listeners for DOM content loaded and keyboard events
+            document.addEventListener('DOMContentLoaded', function() {
+                loadUserData();
+                initializeOnlineStatus();
+            });
+        
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeEditModal();
+                }
+            });
+        
+            // Initialize online status indicator
+            function initializeOnlineStatus() {
+                const onlineIndicator = document.getElementById('online-indicator');
+                onlineIndicator.classList.add(navigator.onLine ? 'online' : 'offline');
+            }
+        
+            // Load user data from localStorage
+            function loadUserData() {
+                const userData = JSON.parse(localStorage.getItem('userData')) || {};
+                const profilePic = localStorage.getItem('profilePicture');
+        
+                // Update navigation username
+                document.getElementById('nav-username').textContent = userData.name?.split(' ')[0] || 'Click to add name';
+        
+                // Update profile fields
+                document.getElementById('user-fullname').textContent = userData.name ? `${userData.name}, ${userData.age || ''}` : "Click 'Edit Profile' to add your information";
+                updateField('occupation', userData.occupation);
+                updateField('location', userData.location);
+                updateField('gender', userData.gender);
+                updateField('movein-date', userData.moveInDate);
+                updateField('budget', userData.budget);
+                updateField('bio', userData.bio);
+        
+                // Update form fields
+                document.getElementById('name').value = userData.name || '';
+                document.getElementById('age').value = userData.age || '';
+                document.getElementById('occupation').value = userData.occupation || '';
+                document.getElementById('location').value = userData.location || '';
+                document.getElementById('gender').value = userData.gender || '';
+                document.getElementById('moveInDate').value = userData.moveInDate || '';
+                document.getElementById('budget').value = userData.budget || '';
+                document.getElementById('bio').value = userData.bio || '';
+        
+                // Update profile picture if exists
+                if (profilePic) {
+                    document.getElementById('profile-pic').src = profilePic;
+                }
+            }
+        
+            // Update a field in the profile section
+            function updateField(id, value) {
+                const element = document.getElementById(`user-${id}`);
+                if (element) {
+                    element.textContent = value || 'Unknown';
+                    element.classList.toggle('empty-field', !value);
+                }
+            }
+        
+            // Open and close the edit profile modal
+            function openEditModal() {
+                document.getElementById('editModal').style.display = 'flex';
+            }
+        
+            function closeEditModal() {
+                document.getElementById('editModal').style.display = 'none';
+            }
+        
+            // Save changes to user data
+            function saveProfile(event) {
+                event.preventDefault();
+            
+                const userData = {
+                    name: document.getElementById('name').value,
+                    age: document.getElementById('age').value,
+                    occupation: document.getElementById('occupation').value,
+                    location: document.getElementById('location').value,
+                    gender: document.getElementById('gender').value,
+                    moveInDate: document.getElementById('moveInDate').value,
+                    budget: document.getElementById('budget').value,
+                    bio: document.getElementById('bio').value,
+                };
+            
+                // Send data to server
+                fetch('/Roomify/Root/api/update_profile.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update UI with new data
+                        loadUserData();
+                        closeEditModal();
+                    } else {
+                        alert('Error updating profile.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+            
+        
+            // Redirect to dashboard after saving changes
+            function saveChanges(event) {
+                saveProfile(event);
+                window.location.href = '/Roomify/Root/html-pages/profile-dash.php';
+            }
+        
+            // Handle photo upload functionality
+            function handlePhotoUpload() {
+                document.getElementById('photo-upload').addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const formData = new FormData();
+                        formData.append('profilePicture', file);
+                
+                        fetch('/Roomify/Root/api/upload_profile_picture.php', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                document.getElementById('profile-pic').src = data.profilePictureUrl;
+                            } else {
+                                alert('Error uploading profile picture.');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+                
+            };
+        
+            // Logout functionality
+            function logout() {
+                localStorage.removeItem('userData');
+                localStorage.removeItem('profilePicture');
+                window.location.href = '/Roomify/Root/html-pages/login-page.html';
+            }        
+    </script>
+</body>
+</html>

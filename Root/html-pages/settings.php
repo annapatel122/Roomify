@@ -1,3 +1,18 @@
+<?php
+// profile-dash.php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in; redirect to login page
+    header('Location: /Roomify/Root/html-pages/login-page.html');
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+// Proceed to display the profile dashboard
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,13 +35,13 @@
 <body>
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="./profile-dash.html">Roomify</a></h1>
+            <h1><a href="./profile-dash.php">Roomify</a></h1>
         </div>
         <div class="nav-items">
             <a href="#"> | </a>
-            <a href="./matches.html">Matches</a>
-            <a href="./messages.html">Messages</a>
-            <a href="./settings.html">Settings</a>
+            <a href="./matches.php">Matches</a>
+            <a href="./messages.php">Messages</a>
+            <a href="./settings.php">Settings</a>
             <a href="#"> | </a>
             <div id="online-indicator" class="online-indicator">
                 <span class="status-dot"></span>
@@ -118,9 +133,9 @@
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
         <div>
-            <a href="./about.html">About Us</a> |
-            <a href="./privacy.html">Privacy Policy</a> |
-            <a href="./contact.html">Contact Us</a>
+            <a href="./about.php">About Us</a> |
+            <a href="./privacy.php">Privacy Policy</a> |
+            <a href="./contact.php">Contact Us</a>
         </div>
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>

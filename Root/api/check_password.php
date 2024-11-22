@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['user_id'] = $user['id'];
-
 $host = 'localhost';
 $port = 3306;
 $dbname = 'user_db';  
@@ -29,11 +27,11 @@ try {
     $user = $stmt->fetch();
 
     if ($user) {
-        
         if (password_verify($password, $user['password'])) {
-           
+            // Correct placement of session assignments
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            header('Location: /Roomify/Root/html-pages/login_success.html?username=' . urlencode($username));
+            header('Location: /Roomify/Root/html-pages/login_success.php?username=' . urlencode($username));
             exit();
         } else {
           

@@ -1,9 +1,24 @@
+<?php
+// profile-dash.php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in; redirect to login page
+    header('Location: /Roomify/Root/html-pages/login-page.html');
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+// Proceed to display the profile dashboard
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Roomify</title>
+    <title>About Us - Roomify</title>
     <script src="../assets/js/theme.js"></script>
     <!-- CSS -->
 <link rel="stylesheet" href="../assets/css/theme.css">
@@ -17,13 +32,13 @@
 <body>
     <nav class="top-nav">
         <div class="logonav">
-            <h1><a href="./profile-dash.html">Roomify</a></h1>
+            <h1><a href="./profile-dash.php">Roomify</a></h1>
         </div>
         <div class="nav-items">
             <a href="#"> | </a>
-            <a href="./matches.html">Matches</a>
-            <a href="./messages.html">Messages</a>
-            <a href="./settings.html">Settings</a>
+            <a href="./matches.php">Matches</a>
+            <a href="./messages.php">Messages</a>
+            <a href="./settings.php">Settings</a>
             <a href="#"> | </a>
             <div id="online-indicator" class="online-indicator">
                 <span class="status-dot"></span>
@@ -35,29 +50,22 @@
     </nav>
 
     <main class="main-container">
-        <h2>Contact Us</h2>
-        <form action="#" method="post" class="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
+        <h2>About Us</h2>
+        <section class="team-section">
+            <div class="team-member">
+                <img src="../assets/images/default-profile.png" alt="Member Photo">
+                <h3>Developer 1</h3>
+                <p>Role and bio details...</p>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" required></textarea>
-            </div>
-            <button type="submit" class="send-message-button">Submit</button>
-        </form>
+            <!-- Repeat for additional team members -->
+        </section>
     </main>
 
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
-        <a href="./about.html">About Us</a> | 
-        <a href="./privacy.html">Privacy Policy</a> | 
-        <a href="./contact.html">Contact Us</a>
+        <a href="./about.php">About Us</a> | 
+        <a href="./privacy.php">Privacy Policy</a> | 
+        <a href="./contact.php">Contact Us</a>
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="../assets/images/facebook-icon.png" alt="Facebook"></a>
             <!-- CHange link from twitter png to bluesky -->
