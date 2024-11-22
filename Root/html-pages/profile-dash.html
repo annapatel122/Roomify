@@ -200,7 +200,7 @@
             // Save changes to user data
             function saveProfile(event) {
                 event.preventDefault();
-        
+            
                 const userData = {
                     name: document.getElementById('name').value,
                     age: document.getElementById('age').value,
@@ -211,14 +211,30 @@
                     budget: document.getElementById('budget').value,
                     bio: document.getElementById('bio').value,
                 };
-        
-                // Save to localStorage
-                localStorage.setItem('userData', JSON.stringify(userData));
-        
-                // Reload profile data and close modal
-                loadUserData();
-                closeEditModal();
+            
+                // Send data to server
+                fetch('/Roomify/Root/api/update_profile.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update UI with new data
+                        loadUserData();
+                        closeEditModal();
+                    } else {
+                        alert('Error updating profile.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
+            
         
             // Redirect to dashboard after saving changes
             function saveChanges(event) {
@@ -228,20 +244,31 @@
         
             // Handle photo upload functionality
             function handlePhotoUpload() {
-                document.getElementById('photo-upload').click();
-            }
-        
-            document.getElementById('photo-upload').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('profile-pic').src = e.target.result;
-                        localStorage.setItem('profilePicture', e.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
+                document.getElementById('photo-upload').addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const formData = new FormData();
+                        formData.append('profilePicture', file);
+                
+                        fetch('/Roomify/Root/api/upload_profile_picture.php', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                document.getElementById('profile-pic').src = data.profilePictureUrl;
+                            } else {
+                                alert('Error uploading profile picture.');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+                
+            };
         
             // Logout functionality
             function logout() {

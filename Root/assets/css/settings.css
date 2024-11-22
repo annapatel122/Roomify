@@ -15,6 +15,17 @@ body {
     align-items: center;
 }
 
+.main-container h2 {
+    color: #ffffff; /* White text for contrast */
+    font-weight: 700; /* Bold */
+    font-size: 2em; /* Slightly larger size */
+    background-color: #2b2b2b; /* Dark background behind the text */
+    padding: 10px 20px; /* Adds spacing around the text */
+    border-radius: 10px; /* Rounds the corners */
+    display: inline-block; /* Keeps the background tight to the text */
+    margin-bottom: 30px;
+}
+
 /* Settings Container */
 .settings-container {
     max-width: 800px;

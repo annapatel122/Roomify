@@ -36,6 +36,7 @@
     </nav>
 
     <main class="main-container">
+        <h2>Your Messages</h2>
         <div class="profile-header">
             <button class="match-switch" id="prev-match">&lt;</button>
             <div class="match-profile">
@@ -44,7 +45,6 @@
             </div>
             <button class="match-switch" id="next-match">&gt;</button>
         </div>
-        <h2>Messages</h2>
         <div class="messages-section">
             <div class="message-thread">
                 <div class="chat-box" id="chat-box">
@@ -59,68 +59,60 @@
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const matches = [
-                { username: "Alice", profilePic: "../assets/images/default-profile.png.png" },
-                { username: "Bob", profilePic: "../assets/images/default-profile.png.png" },
-                { username: "Charlie", profilePic: "../assets/images/default-profile.png.png" }
-            ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const matchUserId = urlParams.get('match_id');
         
-            let currentMatchIndex = 0;
-
-    const matchPic = document.getElementById("match-pic");
-    const matchUsername = document.getElementById("match-username");
-    const chatBox = document.getElementById("chat-box");
-    const messageInput = document.getElementById("message-input");
-    const sendMessageButton = document.getElementById("send-message");
-
-    const updateMatch = () => {
-        const match = matches[currentMatchIndex];
-        matchPic.src = match.profilePic;
-        matchUsername.textContent = match.username;
-
-        // Clear chat and add initial message from the match
-        chatBox.innerHTML = "";
-        const initialMessage = document.createElement("div");
-        initialMessage.classList.add("message", "received");
-        initialMessage.innerHTML = `<p><strong>${match.username}:</strong> Send me a message to start chatting!</p>`;
-        chatBox.appendChild(initialMessage);
-    };
-
-    const sendMessage = () => {
-        const messageText = messageInput.value.trim();
-        if (!messageText) return;
-
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message", "sent");
-        messageElement.innerHTML = `<p><strong>You:</strong> ${messageText}</p>`;
-        chatBox.appendChild(messageElement);
-
-        messageInput.value = "";
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
-    };
-
-    document.getElementById("prev-match").addEventListener("click", () => {
-        if (currentMatchIndex > 0) {
-            currentMatchIndex--;
-            updateMatch();
-        }
-    });
-
-    document.getElementById("next-match").addEventListener("click", () => {
-        if (currentMatchIndex < matches.length - 1) {
-            currentMatchIndex++;
-            updateMatch();
-        }
-    });
-
-    sendMessageButton.addEventListener("click", sendMessage);
-    messageInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") sendMessage();
-    });
-
-    updateMatch();
-});
+            // Fetch messages
+            fetch(`/api/get_messages?user_id=${matchUserId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const chatBox = document.getElementById('chat-box');
+                    chatBox.innerHTML = '';
+                    data.messages.forEach(message => {
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('message', message.sender_id === currentUserId ? 'sent' : 'received');
+                        messageElement.innerHTML = `<p><strong>${message.sender_name}:</strong> ${message.message_text}</p>`;
+                        chatBox.appendChild(messageElement);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        
+            // Send message
+            document.getElementById('send-message').addEventListener('click', () => {
+                const messageText = document.getElementById('message-input').value.trim();
+                if (!messageText) return;
+        
+                fetch('/Roomify/Root/api/send_message.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ receiver_id: matchUserId, message_text: messageText }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Append the new message to the chat
+                        const chatBox = document.getElementById('chat-box');
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('message', 'sent');
+                        messageElement.innerHTML = `<p><strong>You:</strong> ${messageText}</p>`;
+                        chatBox.appendChild(messageElement);
+                        document.getElementById('message-input').value = '';
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    } else {
+                        alert('Error sending message.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+        
 
 
     </script>

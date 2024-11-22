@@ -75,18 +75,31 @@
         </div>
     </main>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const matchesSection = document.querySelector(".matches-section");
-        const prevButton = document.getElementById("prev-match");
-        const nextButton = document.getElementById("next-match");
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/Roomify/Root/api/get_matches.php')
+            .then(response => response.json())
+            .then(data => {
+                const matchesSection = document.querySelector('.matches-section');
+                matchesSection.innerHTML = ''; // Clear existing matches
     
-        prevButton.addEventListener("click", () => {
-            alert("Swiping to previous match (future implementation)");
-        });
-    
-        nextButton.addEventListener("click", () => {
-            alert("Swiping to next match (future implementation)");
-        });
+                data.matches.forEach(match => {
+                    const matchCard = document.createElement('div');
+                    matchCard.classList.add('match-card');
+                    matchCard.innerHTML = `
+                        <img src="${match.profile_picture}" alt="Match Profile Picture">
+                        <div class="match-info">
+                            <h3>${match.full_name}</h3>
+                            <p><span class="field-title">Location:</span> ${match.location}</p>
+                            <p><span class="field-title">About Me:</span> ${match.bio}</p>
+                            <a href="./messages.html?match_id=${match.user_id}" class="message-button">Message</a>
+                        </div>
+                    `;
+                    matchesSection.appendChild(matchCard);
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     });
     
 </script>
