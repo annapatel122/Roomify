@@ -18,30 +18,33 @@ try {
     $stmt->execute([$user_id]);
     $swiped_user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    // Prepare placeholders for the IN clause
-    $placeholders = implode(',', array_fill(0, count($swiped_user_ids), '?'));
+    // Initialize parameters array with the current user ID
+    $params = [$user_id];
 
-    // Get profiles excluding the current user and already swiped users
+    // Build the base SQL query
     $sql = 'SELECT u.id AS user_id, p.full_name, p.age, p.occupation, p.location, p.gender, p.move_in_date, p.budget, p.bio, p.profile_picture
             FROM users u
             INNER JOIN user_profiles p ON u.id = p.user_id
             WHERE u.id != ?';
 
+    // Add swiped user IDs to the query if any
     if (!empty($swiped_user_ids)) {
+        // Add placeholders for each swiped user ID
+        $placeholders = implode(',', array_fill(0, count($swiped_user_ids), '?'));
         $sql .= ' AND u.id NOT IN (' . $placeholders . ')';
-        $params = array_merge([$user_id], $swiped_user_ids);
-    } else {
-        $params = [$user_id];
+        // Merge swiped user IDs into the parameters array
+        $params = array_merge($params, $swiped_user_ids);
     }
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
 
-    $profiles = $stmt->fetchAll();
+    $profiles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode(['success' => true, 'profiles' => $profiles]);
 } catch (PDOException $e) {
     http_response_code(500); // Internal Server Error
+    error_log("Database error in get_profiles.php: " . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Database error.']);
 }
 ?>

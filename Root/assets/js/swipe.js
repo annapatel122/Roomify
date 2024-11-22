@@ -10,7 +10,13 @@ let currentX = 0;
 fetch('/Roomify/Root/api/get_profiles.php')
     .then(response => response.json())
     .then(data => {
+        if (!data.success) {
+            console.error('Error from server:', data.message);
+            alert('Error: ' + data.message);
+            return;
+        }
         profiles = data.profiles;
+        console.log('Profiles fetched:', profiles); // For debugging
         if (profiles && profiles.length > 0) {
             loadProfile(profiles[currentProfileIndex]);
         } else {
@@ -22,29 +28,22 @@ fetch('/Roomify/Root/api/get_profiles.php')
         console.error('Error:', error);
     });
 
-// Remove this line to prevent calling loadProfile too early
+// Remove the premature call to loadProfile
 // loadProfile(profiles[currentProfileIndex]);
 
-function loadProfile(profile) {
-    if (!profile) {
+function loadProfile(profiles) {
+    if (!profiles) {
         console.error('Profile is undefined or null');
         return;
     }
-    cardElement.querySelector('img').src = profile.image || "";
-    cardElement.querySelector('h2').textContent = `${profile.name}, ${profile.age}`;
-    const infoParagraphs = cardElement.querySelectorAll('p');
-    infoParagraphs[0].innerHTML = `<strong>Occupation:</strong> ${profile.occupation}`;
-    infoParagraphs[1].innerHTML = `<strong>Location:</strong> ${profile.location}`;
-    infoParagraphs[2].innerHTML = `<strong>About Me:</strong> ${profile.bio}`;
-}
-
-function updateProfile(index) {
-    if (index < profiles.length) {
-        loadProfile(profiles[index]);
-    } else {
-        cardElement.style.display = 'none';
-        alert('No more profiles to display.');
-    }
+    cardElement.querySelector('img').src = profiles.profile_picture || "../assets/images/default-profile.png";
+    cardElement.querySelector('h2').textContent = `${profiles.full_name}, ${profiles.age}`;
+    document.getElementById('profile-occupation').textContent = profiles.occupation;
+    document.getElementById('profile-location').textContent = profiles.location;
+    document.getElementById('profile-gender').textContent = profiles.gender;
+    document.getElementById('profile-movein-date').textContent = profiles.move_in_date;
+    document.getElementById('profile-budget').textContent = profiles.budget;
+    document.getElementById('profile-bio').textContent = profiles.bio;
 }
 
 function handleSwipe(swipeType) {
@@ -74,7 +73,7 @@ function handleSwipe(swipeType) {
     });
 }
 
-// Modify arrow click events
+// Arrow click events
 document.getElementById('left-arrow').addEventListener('click', () => {
     handleSwipe('dislike');
 });
@@ -136,7 +135,7 @@ function stopDragging() {
 
 // Logout function
 function logout() {
-    window.location.href = '/Roomify/Root/api/logout.php';
+    window.location.href = '/Roomify/Root/html-pages/login-page.html';
 }
 
 // Save and apply settings

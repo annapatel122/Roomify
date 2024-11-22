@@ -1,5 +1,5 @@
 <?php
-// profile-dash.php
+// swipe-interface.php
 
 session_start();
 
@@ -32,6 +32,7 @@ $username = $_SESSION['username'];
             <h1><a href="./profile-dash.php">Roomify</a></h1>
         </div>
         <div class="nav-items">
+<!--Make the find roommate button here a small rounded button -->
             <a href="./swipe-interface.php">Find your Roommate!</a>
             <a href="#"> | </a>
             <a href="./matches.php">Matches</a>
@@ -49,17 +50,21 @@ $username = $_SESSION['username'];
 
     <div class="swipe-container" id="swipe-container">
         <div class="arrow left-arrow" id="left-arrow">❮</div>
-        
+    
         <div class="card" id="profile-card">
-            <img src="../assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
-            <h2>Sarah Johnson, 24</h2>
-            <p><strong>Occupation:</strong> Software Engineer</p>
-            <p><strong>Location:</strong> San Francisco, CA</p>
-            <p><strong>About Me:</strong> Looking for a clean, quiet apartment. I enjoy cooking and watching movies. Early riser and very organized!</p>
+            <img src="../assets/images/default-profile.png" alt="Profile Picture">
+            <h2></h2>
+            <p><strong>Occupation:</strong> <span id="profile-occupation"></span></p>
+            <p><strong>Location:</strong> <span id="profile-location"></span></p>
+            <p><strong>Gender:</strong> <span id="profile-gender"></span></p>
+            <p><strong>Move-in Date:</strong> <span id="profile-movein-date"></span></p>
+            <p><strong>Budget:</strong> $<span id="profile-budget"></span></p>
+            <p><strong>About Me:</strong> <span id="profile-bio"></span></p>
         </div>
 
         <div class="arrow right-arrow" id="right-arrow">❯</div>
     </div>
+
 
     <footer class="footer">
         <p>&copy; 2024 Roomify. All rights reserved.</p>
