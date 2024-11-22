@@ -74,6 +74,7 @@ try {
             <h1><a href="./profile-dash.html">Roomify</a></h1>
         </div>
         <div class="nav-items">
+            <a href="./swipe-interface.php">Find your Roommate!</a>
             <a href="#"> | </a>
             <a href="./matches.php">Matches</a>
             <a href="./messages.php">Messages</a>

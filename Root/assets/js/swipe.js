@@ -1,27 +1,35 @@
 let currentProfileIndex = 0;
 let profiles = [];
 
-fetch('/Roomify/Root/api/get_profiles.php')
-    .then(response => response.json())
-    .then(data => {
-        profiles = data.profiles;
-        loadProfile(profiles[currentProfileIndex]);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
 const cardElement = document.getElementById('profile-card');
 const container = document.getElementById('swipe-container');
 let isDragging = false;
 let startX = 0;
 let currentX = 0;
 
+fetch('/Roomify/Root/api/get_profiles.php')
+    .then(response => response.json())
+    .then(data => {
+        profiles = data.profiles;
+        if (profiles && profiles.length > 0) {
+            loadProfile(profiles[currentProfileIndex]);
+        } else {
+            cardElement.style.display = 'none';
+            alert('No profiles available.');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
-// Load the first profile
-loadProfile(profiles[currentProfileIndex]);
+// Remove this line to prevent calling loadProfile too early
+// loadProfile(profiles[currentProfileIndex]);
 
 function loadProfile(profile) {
+    if (!profile) {
+        console.error('Profile is undefined or null');
+        return;
+    }
     cardElement.querySelector('img').src = profile.image || "";
     cardElement.querySelector('h2').textContent = `${profile.name}, ${profile.age}`;
     const infoParagraphs = cardElement.querySelectorAll('p');
@@ -74,7 +82,6 @@ document.getElementById('left-arrow').addEventListener('click', () => {
 document.getElementById('right-arrow').addEventListener('click', () => {
     handleSwipe('like');
 });
-
 
 // Touch and mouse events for card swiping
 cardElement.addEventListener('mousedown', startDragging);
@@ -129,8 +136,7 @@ function stopDragging() {
 
 // Logout function
 function logout() {
-    localStorage.removeItem('userData');
-    window.location.href = 'login-page.html';
+    window.location.href = '/Roomify/Root/api/logout.php';
 }
 
 // Save and apply settings
