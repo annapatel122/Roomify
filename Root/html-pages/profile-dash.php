@@ -11,7 +11,40 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
-// Proceed to display the profile dashboard
+
+// Include the database connection
+require '../api/db_connect.php';
+
+// Fetch user's profile data from the database
+try {
+    $stmt = $pdo->prepare('SELECT * FROM user_profiles WHERE user_id = ?');
+    $stmt->execute([$user_id]);
+    $profile = $stmt->fetch();
+
+    if (!$profile) {
+        // Profile doesn't exist; set default values
+        $profile = [
+            'full_name' => "Click 'Edit Profile' to add your information",
+            'age' => '',
+            'occupation' => 'Occupation',
+            'location' => 'Location',
+            'gender' => 'Gender',
+            'move_in_date' => 'Move-in Date',
+            'budget' => 'Budget',
+            'bio' => 'Tell us about yourself...',
+            'profile_picture' => '../assets/images/default-profile.png',
+        ];
+    } else {
+        // If profile picture is not set, use default
+        if (empty($profile['profile_picture'])) {
+            $profile['profile_picture'] = '../assets/images/default-profile.png';
+        }
+    }
+} catch (PDOException $e) {
+    // Handle database error
+    echo "Error fetching profile data.";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,18 +92,24 @@ $username = $_SESSION['username'];
     <main class="main-container">
         <section class="profile-section">
             <div class="profile-picture">
-                <img src="../assets/images/default-profile.png" alt="Profile Picture" id="profile-pic">
-                <button class="edit-photo-button" onclick="handlePhotoUpload()">Edit Photo</button>
-                <input type="file" id="photo-upload" class="hidden" accept="image/*" title="Upload Profile Picture">
+                <img src="<?php echo htmlspecialchars($profile['profile_picture']); ?>" alt="Profile Picture" id="profile-pic">
+                <button class="edit-photo-button" onclick="openEditModal()">Edit Profile</button>
             </div>
             <div class="profile-info">
-                <h2 id="user-fullname"><span class="empty-field">Click 'Edit Profile' to add your information</span></h2>
-                <p><strong>Occupation:</strong> <span id="user-occupation" class="empty-field">Occupation</span></p>
-                <p><strong>Location:</strong> <span id="user-location" class="empty-field">Location</span></p>
-                <p><strong>Gender:</strong> <span id="user-gender" class="empty-field">Gender</span></p>
-                <p><strong>Move-in Date:</strong> <span id="user-movein-date" class="empty-field">Move-in Date</span></p>
-                <p><strong>Budget:</strong> $<span id="user-budget" class="empty-field">Budget</span></p>
-                <p><strong>About Me:</strong> <span id="user-bio" class="empty-field">Tell us about yourself...</span></p>
+                <h2 id="user-fullname">
+                    <?php
+                    echo htmlspecialchars($profile['full_name']);
+                    if (!empty($profile['age'])) {
+                        echo ', ' . htmlspecialchars($profile['age']);
+                    }
+                    ?>
+                </h2>
+                <p><strong>Occupation:</strong> <span id="user-occupation"><?php echo htmlspecialchars($profile['occupation']); ?></span></p>
+                <p><strong>Location:</strong> <span id="user-location"><?php echo htmlspecialchars($profile['location']); ?></span></p>
+                <p><strong>Gender:</strong> <span id="user-gender"><?php echo htmlspecialchars($profile['gender']); ?></span></p>
+                <p><strong>Move-in Date:</strong> <span id="user-movein-date"><?php echo htmlspecialchars($profile['move_in_date']); ?></span></p>
+                <p><strong>Budget:</strong> $<span id="user-budget"><?php echo htmlspecialchars($profile['budget']); ?></span></p>
+                <p><strong>About Me:</strong> <span id="user-bio"><?php echo nl2br(htmlspecialchars($profile['bio'])); ?></span></p>
                 <button class="edit-profile-button" onclick="openEditModal()">Edit Profile</button>
             </div>
         </section>
@@ -85,45 +124,49 @@ $username = $_SESSION['username'];
         <div class="modal-content">
             <span class="close-modal" onclick="closeEditModal()">&times;</span>
             <h2>Edit Profile</h2>
-            <form id="profileForm" onsubmit="saveProfile(event)">
+            <form id="profileForm" action="/Roomify/Root/api/update_profile.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                </div>
                 <div class="form-group">
                     <label for="name">Full Name:</label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($profile['full_name']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" id="age" min="18" max="100" required>
+                    <input type="number" id="age" name="age" min="18" max="100" value="<?php echo htmlspecialchars($profile['age']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="occupation">Occupation:</label>
-                    <input type="text" id="occupation" required>
+                    <input type="text" id="occupation" name="occupation" value="<?php echo htmlspecialchars($profile['occupation']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="location">Location:</label>
-                    <input type="text" id="location" required>
+                    <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($profile['location']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender:</label>
-                    <select id="gender" required>
+                    <select id="gender" name="gender" required>
                         <option value="">Select gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Non-binary">Non-binary</option>
-                        <option value="Other">Other</option>
-                        <option value="Prefer not to say">Prefer not to say</option>
+                        <option value="Male" <?php if ($profile['gender'] == 'Male') echo 'selected'; ?>>Male</option>
+                        <option value="Female" <?php if ($profile['gender'] == 'Female') echo 'selected'; ?>>Female</option>
+                        <option value="Non-binary" <?php if ($profile['gender'] == 'Non-binary') echo 'selected'; ?>>Non-binary</option>
+                        <option value="Other" <?php if ($profile['gender'] == 'Other') echo 'selected'; ?>>Other</option>
+                        <option value="Prefer not to say" <?php if ($profile['gender'] == 'Prefer not to say') echo 'selected'; ?>>Prefer not to say</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="moveInDate">Move-in Date:</label>
-                    <input type="date" id="moveInDate" required>
+                    <input type="date" id="moveInDate" name="moveInDate" value="<?php echo htmlspecialchars($profile['move_in_date']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="budget">Budget ($):</label>
-                    <input type="number" id="budget" min="0" required>
+                    <input type="number" id="budget" name="budget" min="0" value="<?php echo htmlspecialchars($profile['budget']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="bio">About Me:</label>
-                    <textarea id="bio" required></textarea>
+                    <textarea id="bio" name="bio" required><?php echo htmlspecialchars($profile['bio']); ?></textarea>
                 </div>
                 <button type="submit" class="save-button">Save Profile</button>
             </form>
@@ -164,35 +207,9 @@ $username = $_SESSION['username'];
         
             // Load user data from localStorage
             function loadUserData() {
-                const userData = JSON.parse(localStorage.getItem('userData')) || {};
-                const profilePic = localStorage.getItem('profilePicture');
-        
                 // Update navigation username
                 document.getElementById('nav-username').textContent = userData.name?.split(' ')[0] || 'Click to add name';
-        
-                // Update profile fields
-                document.getElementById('user-fullname').textContent = userData.name ? `${userData.name}, ${userData.age || ''}` : "Click 'Edit Profile' to add your information";
-                updateField('occupation', userData.occupation);
-                updateField('location', userData.location);
-                updateField('gender', userData.gender);
-                updateField('movein-date', userData.moveInDate);
-                updateField('budget', userData.budget);
-                updateField('bio', userData.bio);
-        
-                // Update form fields
-                document.getElementById('name').value = userData.name || '';
-                document.getElementById('age').value = userData.age || '';
-                document.getElementById('occupation').value = userData.occupation || '';
-                document.getElementById('location').value = userData.location || '';
-                document.getElementById('gender').value = userData.gender || '';
-                document.getElementById('moveInDate').value = userData.moveInDate || '';
-                document.getElementById('budget').value = userData.budget || '';
-                document.getElementById('bio').value = userData.bio || '';
-        
-                // Update profile picture if exists
-                if (profilePic) {
-                    document.getElementById('profile-pic').src = profilePic;
-                }
+    
             }
         
             // Update a field in the profile section
