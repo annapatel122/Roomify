@@ -13,6 +13,8 @@ $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 // Proceed to display the profile dashboard
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
